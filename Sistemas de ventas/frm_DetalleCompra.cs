@@ -25,28 +25,22 @@ namespace Sistemas_de_ventas
 
         private void bntbuscar_Click(object sender, EventArgs e)
         {
-            Compra oCompra = new CN_Compra().ObtenerCompra(txtbusqueda.Text);
-
-            if (oCompra.IdCompra != 0)
+            if (dgvtotal.Rows.Count > 0)
             {
+                string busqueda = txtbusqueda.Text.Trim().ToUpper();
 
-                txtnumerodocumento.Text = oCompra.NumeroDocumento;
-
-                txtfecha.Text = oCompra.FechaRegistro;
-                txttipodocumento.Text = oCompra.TipoDocumento;
-                txttipopago.Text = oCompra.TipoPago;
-                txtusuario.Text = oCompra.oUsuario.NombreCompleto;
-                txtdocproveedor.Text = oCompra.oProveedor.Ruc;
-                txtnombreproveedor.Text = oCompra.oProveedor.RazonSocial;
-
-                dgvdata.Rows.Clear();
-                foreach (Detalle_Compra dc in oCompra.oDetalleCompra)
+                foreach (DataGridViewRow row in dgvtotal.Rows)
                 {
-                    dgvdata.Rows.Add(new object[] { dc.oProducto.Descripcion, dc.PrecioCompra, dc.Cantidad, dc.MontoTotal });
+                    if (row.Cells["Placa"].Value != null &&
+                        row.Cells["Placa"].Value.ToString().ToUpper().Contains(busqueda))
+                    {
+                        row.Visible = true;
+                    }
+                    else
+                    {
+                        row.Visible = false;
+                    }
                 }
-
-                txtmontototal.Text = oCompra.MontoTotal.ToString("0.00");
-
             }
         }
 
@@ -144,13 +138,53 @@ namespace Sistemas_de_ventas
 
             foreach (Compra item in lista)
             {
-                dgvtotal.Rows.Add(new object[] {"",                  
-                    item.NumeroDocumento,              
+                dgvtotal.Rows.Add(new object[] {        
+                    item.IdCompra,
+                    item.NumeroDocumento,
+                    item.FechaRegistro,
                     item.TipoDocumento,
+                    item.oUsuario,
+                    item.oProveedor.Ruc,
+                    item.oProveedor.RazonSocial,
                     item.TipoPago,
-                    item.MontoTotal,
-                    item.FechaRegistro
+                    item.MontoTotal
                 });
+            }
+        }
+
+        private void dgvtotal_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvtotal.Columns[e.ColumnIndex].Name == "btnseleccionar")
+            {
+                int indice = e.RowIndex;
+
+                if (indice >= 0)
+                {
+                    txtindice.Text = indice.ToString();
+                    txtid.Text = dgvtotal.Rows[indice].Cells["IdVenta"].Value.ToString();
+                    txtnumerodocumento.Text = dgvtotal.Rows[indice].Cells["NumeroDocumento"].Value.ToString();
+                    txttipodocumento.Text = dgvtotal.Rows[indice].Cells["TipoDocumento"].Value.ToString();
+                    txttipopago.Text = dgvtotal.Rows[indice].Cells["TipoPago"].Value.ToString();
+                    txtmontototal.Text = dgvtotal.Rows[indice].Cells["MontoTotal"].Value.ToString();
+                    txtfecha.Text = dgvtotal.Rows[indice].Cells["FechaRegistro"].Value.ToString();
+
+                    // Obtener el IdVenta para buscar los productos
+                    int idVenta = Convert.ToInt32(txtid.Text);
+
+                    dgvdata.Rows.Clear();
+                    // Llamar al método para obtener los productos asociados a la venta
+                    List<Detalle_Compra> detalleCompra = new CN_Compra().ObtenerProductoPorIdCompra(idVenta);
+
+                    foreach (Detalle_Compra item in detalleCompra)
+                    {
+                        dgvdata.Rows.Add(new object[] {
+                               item.oProducto.Descripcion,
+                               item.PrecioVenta,
+                               item.Cantidad,
+                               item.MontoTotal
+                        });
+                    }
+                }
             }
         }
     }

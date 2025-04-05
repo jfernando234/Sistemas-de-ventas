@@ -13,7 +13,6 @@ namespace CapaNegocio
     {
         private CD_Compra objcd_compra = new CD_Compra();
 
-
         public List<Compra> Listar()
         {
             return objcd_compra.Listar();
@@ -28,18 +27,14 @@ namespace CapaNegocio
             return objcd_compra.Registrar(obj, DetalleCompra, out Mensaje);
         }
 
-        public Compra ObtenerCompra(string numero)
+       
+        public List<Detalle_Compra> ObtenerProductoPorIdCompra(int IdCompra)
         {
 
-            Compra oCompra = objcd_compra.ObtenerCompra(numero);
+            List<Detalle_Compra> oDetalleCompra = objcd_compra.ObtenerDetalleCompra(IdCompra);
 
-            if (oCompra.IdCompra != 0)
-            {
-                List<Detalle_Compra> oDetalleCompra = objcd_compra.ObtenerDetalleCompra(oCompra.IdCompra);
-
-                oCompra.oDetalleCompra = oDetalleCompra;
-            }
-            return oCompra;
+            // Retornar la lista de detalles directamente
+            return oDetalleCompra;
         }
     }
 }

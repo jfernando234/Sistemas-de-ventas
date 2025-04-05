@@ -65,7 +65,8 @@
             this.txtindice = new System.Windows.Forms.TextBox();
             this.txtid = new System.Windows.Forms.TextBox();
             this.btnseleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.iddocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Idcompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numdoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -393,7 +394,8 @@
             this.dgvtotal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvtotal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnseleccionar,
-            this.iddocumento,
+            this.Idcompra,
+            this.numdoc,
             this.Fecha,
             this.TipoDocumento,
             this.Usuario,
@@ -406,6 +408,7 @@
             this.dgvtotal.ReadOnly = true;
             this.dgvtotal.Size = new System.Drawing.Size(526, 434);
             this.dgvtotal.TabIndex = 58;
+            this.dgvtotal.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvtotal_CellContentClick);
             // 
             // label13
             // 
@@ -451,12 +454,19 @@
             this.btnseleccionar.ReadOnly = true;
             this.btnseleccionar.Width = 50;
             // 
-            // iddocumento
+            // Idcompra
             // 
-            this.iddocumento.HeaderText = "iddocumento";
-            this.iddocumento.Name = "iddocumento";
-            this.iddocumento.ReadOnly = true;
-            this.iddocumento.Visible = false;
+            this.Idcompra.HeaderText = "Idcompra";
+            this.Idcompra.Name = "Idcompra";
+            this.Idcompra.ReadOnly = true;
+            this.Idcompra.Visible = false;
+            // 
+            // numdoc
+            // 
+            this.numdoc.HeaderText = "numdoc";
+            this.numdoc.Name = "numdoc";
+            this.numdoc.ReadOnly = true;
+            this.numdoc.Visible = false;
             // 
             // Fecha
             // 
@@ -580,7 +590,8 @@
         private System.Windows.Forms.TextBox txtindice;
         private System.Windows.Forms.TextBox txtid;
         private System.Windows.Forms.DataGridViewButtonColumn btnseleccionar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iddocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Idcompra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numdoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoDocumento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
