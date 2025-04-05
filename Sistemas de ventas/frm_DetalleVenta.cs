@@ -26,7 +26,7 @@ namespace Sistemas_de_ventas
         private void frm_DetalleVenta_Load(object sender, EventArgs e)
         {
 
-            //LISTAR USUARIOS
+            //LISTAR
 
             List<Venta> lista = new CN_Venta().Listar();
 

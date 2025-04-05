@@ -23,7 +23,7 @@ namespace Sistemas_de_ventas
 
         private void frm_Producto_Load(object sender, EventArgs e)
         {
-            List<Categoria> listacategoria = new CN_Categoria().Listar();
+            List<Categoria> listacategoria = new CN_Categoria().Listar().Where(c => c.Estado == true).ToList();
 
             foreach (Categoria item in listacategoria)
             {
@@ -262,27 +262,32 @@ namespace Sistemas_de_ventas
             {
                 DataTable dt = new DataTable();
 
+                // Agrega columnas visibles (excepto las vacías)
+                List<DataGridViewColumn> columnasVisibles = new List<DataGridViewColumn>();
+
                 foreach (DataGridViewColumn columna in dgvdata.Columns)
                 {
                     if (columna.HeaderText != "" && columna.Visible)
+                    {
                         dt.Columns.Add(columna.HeaderText, typeof(string));
+                        columnasVisibles.Add(columna); // Guardamos el orden
+                    }
                 }
 
+                // Agrega filas
                 foreach (DataGridViewRow row in dgvdata.Rows)
                 {
                     if (row.Visible)
-                        dt.Rows.Add(new object[] {
-                            row.Cells[2].Value.ToString(),
-                            row.Cells[3].Value.ToString(),
-                            row.Cells[4].Value.ToString(),
-                            row.Cells[5].Value.ToString(),
-                            row.Cells[6].Value.ToString(),
-                            row.Cells[7].Value.ToString(),
-                            row.Cells[8].Value.ToString(),
-                            row.Cells[9].Value.ToString(),
-                            row.Cells[11].Value.ToString(),
+                    {
+                        List<string> fila = new List<string>();
 
-                        });
+                        foreach (DataGridViewColumn col in columnasVisibles)
+                        {
+                            fila.Add(row.Cells[col.Index].Value?.ToString() ?? "");
+                        }
+
+                        dt.Rows.Add(fila.ToArray());
+                    }
                 }
 
                 SaveFileDialog savefile = new SaveFileDialog();

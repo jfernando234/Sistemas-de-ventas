@@ -290,8 +290,7 @@ namespace Sistemas_de_ventas
 
             }
 
-            int idcorrelativo = new CN_Compra().ObtenerCorrelativo();
-            string numerodocumento = string.Format("{0:00000}", idcorrelativo);
+            
 
             Compra oCompra = new Compra()
             {
@@ -299,7 +298,7 @@ namespace Sistemas_de_ventas
                 oProveedor = new Proveedor() { IdProveedor = Convert.ToInt32(txtidproveedor.Text) },
                 TipoDocumento = ((OpcionCombo)cbotipodocumento.SelectedItem).Texto,
                 TipoPago = ((OpcionCombo)cmbtipopago.SelectedItem).Texto,
-                NumeroDocumento = numerodocumento,
+                NumeroDocumento = txtcorrelativo.Text,
                 MontoTotal = Convert.ToDecimal(txttotalpagar.Text)
             };
 
@@ -308,12 +307,11 @@ namespace Sistemas_de_ventas
 
             if (respuesta)
             {
-                var result = MessageBox.Show("Numero de compra generada:\n" + numerodocumento + "\n\n¿Desea copiar al portapapeles?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                var result = MessageBox.Show("Numero de compra generada");
 
-                if (result == DialogResult.Yes)
-                    Clipboard.SetText(numerodocumento);
 
                 txtidproveedor.Text = "0";
+                txtcorrelativo.Text = "";
                 txtdocproveedor.Text = "";
                 txtnombreproveedor.Text = "";
                 dgvdata.Rows.Clear();

@@ -100,29 +100,33 @@ namespace Sistemas_de_ventas
 
                 DataTable dt = new DataTable();
 
+                List<DataGridViewColumn> columnavisibles = new List<DataGridViewColumn>();
+
                 foreach (DataGridViewColumn columna in dgvdata.Columns)
                 {
-                    dt.Columns.Add(columna.HeaderText, typeof(string));
+                    if (columna.HeaderText != "" && columna.Visible)
+                    {
+                        dt.Columns.Add(columna.HeaderText, typeof(string));
+                        columnavisibles.Add(columna);
+                    }
                 }
 
                 foreach (DataGridViewRow row in dgvdata.Rows)
                 {
                     if (row.Visible)
-                        dt.Rows.Add(new object[] {
-                            row.Cells[0].Value.ToString(),
-                            row.Cells[1].Value.ToString(),
-                            row.Cells[2].Value.ToString(),
-                            row.Cells[3].Value.ToString(),
-                            row.Cells[4].Value.ToString(),
-                            row.Cells[5].Value.ToString(),
-                            row.Cells[6].Value.ToString(),
-                            row.Cells[7].Value.ToString(),
-                            row.Cells[8].Value.ToString()                            
-                        });
+                    {
+                        List<string> fila = new List<string>();
+                        foreach (DataGridViewColumn col in columnavisibles)
+                        {
+                            fila.Add(row.Cells[col.Index].Value?.ToString() ?? "");
+                        }
+                        dt.Rows.Add(fila.ToArray());
+                    }
                 }
 
                 SaveFileDialog savefile = new SaveFileDialog();
-                savefile.FileName = string.Format("ReporteServicios_{0}.xlsx", DateTime.Now.ToString("ddMMyyyyHHmmss"));
+                savefile.FileName = string.Format("ReporteVentas_{0}_{1}.xlsx", txtfechainicio.Value.ToString("dd/MM/yyyy"),
+                                                                                txtfechafin.Value.ToString("dd/MM/yyyy"));
                 savefile.Filter = "Excel Files | *.xlsx";
 
                 if (savefile.ShowDialog() == DialogResult.OK)

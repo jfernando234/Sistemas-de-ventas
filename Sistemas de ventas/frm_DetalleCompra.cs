@@ -140,7 +140,18 @@ namespace Sistemas_de_ventas
 
         private void frm_DetalleCompra_Load(object sender, EventArgs e)
         {
+            List<Compra> lista = new CN_Compra().Listar();
 
+            foreach (Compra item in lista)
+            {
+                dgvtotal.Rows.Add(new object[] {"",                  
+                    item.NumeroDocumento,              
+                    item.TipoDocumento,
+                    item.TipoPago,
+                    item.MontoTotal,
+                    item.FechaRegistro
+                });
+            }
         }
     }
 }

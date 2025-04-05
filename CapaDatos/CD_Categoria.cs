@@ -46,7 +46,6 @@ namespace CapaDatos
                 }
                 catch (Exception ex)
                 {
-
                     lista = new List<Categoria>();
                 }
             }
