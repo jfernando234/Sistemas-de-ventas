@@ -138,16 +138,16 @@ namespace Sistemas_de_ventas
 
             foreach (Compra item in lista)
             {
-                dgvtotal.Rows.Add(new object[] {        
+                dgvtotal.Rows.Add(new object[] {"",    
                     item.IdCompra,
-                    item.NumeroDocumento,
-                    item.FechaRegistro,
+                    item.NumeroDocumento,       
                     item.TipoDocumento,
                     item.oUsuario,
                     item.oProveedor.Ruc,
                     item.oProveedor.RazonSocial,
                     item.TipoPago,
-                    item.MontoTotal
+                    item.MontoTotal,
+                    item.FechaRegistro,
                 });
             }
         }
@@ -161,25 +161,27 @@ namespace Sistemas_de_ventas
                 if (indice >= 0)
                 {
                     txtindice.Text = indice.ToString();
-                    txtid.Text = dgvtotal.Rows[indice].Cells["IdVenta"].Value.ToString();
+                    txtid.Text = dgvtotal.Rows[indice].Cells["IdCompra"].Value.ToString();
                     txtnumerodocumento.Text = dgvtotal.Rows[indice].Cells["NumeroDocumento"].Value.ToString();
                     txttipodocumento.Text = dgvtotal.Rows[indice].Cells["TipoDocumento"].Value.ToString();
+                    txtusuario.Text = dgvtotal.Rows[indice].Cells["Usuario"].Value.ToString();
+                    txtdocproveedor.Text = dgvtotal.Rows[indice].Cells["Ruc"].Value.ToString();
                     txttipopago.Text = dgvtotal.Rows[indice].Cells["TipoPago"].Value.ToString();
-                    txtmontototal.Text = dgvtotal.Rows[indice].Cells["MontoTotal"].Value.ToString();
-                    txtfecha.Text = dgvtotal.Rows[indice].Cells["FechaRegistro"].Value.ToString();
+                    txtmontototal.Text = dgvtotal.Rows[indice].Cells["Total"].Value.ToString();
+                    txtfecha.Text = dgvtotal.Rows[indice].Cells["Fecha"].Value.ToString();
 
                     // Obtener el IdVenta para buscar los productos
-                    int idVenta = Convert.ToInt32(txtid.Text);
+                    int idCompra = Convert.ToInt32(txtid.Text);
 
                     dgvdata.Rows.Clear();
                     // Llamar al método para obtener los productos asociados a la venta
-                    List<Detalle_Compra> detalleCompra = new CN_Compra().ObtenerProductoPorIdCompra(idVenta);
+                    List<Detalle_Compra> detalleCompra = new CN_Compra().ObtenerProductoPorIdCompra(idCompra);
 
                     foreach (Detalle_Compra item in detalleCompra)
                     {
                         dgvdata.Rows.Add(new object[] {
                                item.oProducto.Descripcion,
-                               item.PrecioVenta,
+                               item.PrecioCompra,
                                item.Cantidad,
                                item.MontoTotal
                         });

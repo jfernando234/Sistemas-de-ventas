@@ -91,15 +91,11 @@ namespace CapaDatos
                 {
 
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("select c.IdCompra,");
-                    query.AppendLine("u.NombreCompleto,");
-                    query.AppendLine("pr.Documento,pr.RazonSocial,");
-                    query.AppendLine("c.TipoDocumento,c.TipoPago,c.NumeroDocumento,c.MontoTotal,convert(char(10), c.FechaCreacion, 103)[FechaRegistro]");
-                    query.AppendLine("from COMPRA c");
+                    query.AppendLine("SELECT c.IdCOMPRA,c.NumeroDocumento,c.TipoDocumento,u.NombreCompleto,");
+                    query.AppendLine("pr.Documento,pr.RazonSocial,c.TipoPago,c.MontoTotal,convert(char(10),c.FechaCreacion,103)[FechaRegistro]");
+                    query.AppendLine("FROM COMPRA c");
                     query.AppendLine("inner join USUARIO u on u.IdUsuario = c.IdUsuario");
                     query.AppendLine("inner join PROVEEDOR pr on pr.IdProveedor = c.IdProveedor");
-                    query.AppendLine("where c.NumeroDocumento = @numero");
-
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;
