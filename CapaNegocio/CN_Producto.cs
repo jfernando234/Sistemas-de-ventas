@@ -96,6 +96,7 @@ namespace CapaNegocio
             foreach (var producto in productos)
             {
                 productoData.InsertarProducto(
+<<<<<<< HEAD
                     producto.Codigo, 
                     producto.Descripcion, 
                     producto.Categoria,
@@ -105,6 +106,11 @@ namespace CapaNegocio
                     producto.PrecioVenta,
                     producto.UnidadMedida,
                     producto.FechaRegistro
+=======
+                    producto.Codigo, producto.Descripcion, producto.Categoria,
+                    producto.Ubicacion, producto.Stock, producto.PrecioCompra, producto.PrecioVenta,
+                    producto.UnidadMedida, producto.FechaRegistro
+>>>>>>> 7ab42f88e98eb044e7a945b29218bc6f3f55953d
                 );
             }
         }

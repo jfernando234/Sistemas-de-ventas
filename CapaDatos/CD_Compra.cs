@@ -11,7 +11,52 @@ namespace CapaDatos
 {
     public class CD_Compra
     {
+<<<<<<< HEAD
         
+=======
+        public List<Compra> Listar()
+        {
+            List<Compra> lista = new List<Compra>();
+
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder query = new StringBuilder();
+                    query.AppendLine("SELECT IdVenta,NumeroDocumento,Placa,NombreCliente,TipoDocumento,TipoPago,Ruc,Kilometraje,MontoPago,MontoCambio,MontoTotal,convert(char(10),FechaRegistro,103)[FechaRegistro] FROM VENTA");
+
+                    SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
+                    cmd.CommandType = CommandType.Text;
+
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(new Compra()
+                            {
+                               
+                                NumeroDocumento = dr["NumeroDocumento"].ToString(),
+                                
+                                TipoDocumento = dr["TipoDocumento"].ToString(),
+                                TipoPago = dr["TipoPago"].ToString(),
+                                
+                                MontoTotal = Convert.ToDecimal(dr["MontoTotal"].ToString()),
+                                FechaRegistro = dr["FechaRegistro"].ToString()
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    lista = new List<Compra>();
+                }
+            }
+            return lista;
+        }
+>>>>>>> 7ab42f88e98eb044e7a945b29218bc6f3f55953d
 
         public int ObtenerCorrelativo()
         {
@@ -81,9 +126,15 @@ namespace CapaDatos
             return Respuesta;
         }
 
+<<<<<<< HEAD
         public List<Compra> Listar()
         {
             List<Compra> lista = new List<Compra>();
+=======
+        public Compra ObtenerCompra(string numero)
+        {
+            Compra obj = new Compra();
+>>>>>>> 7ab42f88e98eb044e7a945b29218bc6f3f55953d
             using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
             {
 
@@ -91,6 +142,7 @@ namespace CapaDatos
                 {
 
                     StringBuilder query = new StringBuilder();
+<<<<<<< HEAD
                     query.AppendLine("SELECT c.IdCOMPRA,c.NumeroDocumento,c.TipoDocumento,u.NombreCompleto,");
                     query.AppendLine("pr.Documento,pr.RazonSocial,c.TipoPago,c.MontoTotal,convert(char(10),c.FechaCreacion,103)[FechaRegistro]");
                     query.AppendLine("FROM COMPRA c");
@@ -98,6 +150,20 @@ namespace CapaDatos
                     query.AppendLine("inner join PROVEEDOR pr on pr.IdProveedor = c.IdProveedor");
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
+=======
+                    query.AppendLine("select c.IdCompra,");
+                    query.AppendLine("u.NombreCompleto,");
+                    query.AppendLine("pr.Documento,pr.RazonSocial,");
+                    query.AppendLine("c.TipoDocumento,c.TipoPago,c.NumeroDocumento,c.MontoTotal,convert(char(10), c.FechaCreacion, 103)[FechaRegistro]");
+                    query.AppendLine("from COMPRA c");
+                    query.AppendLine("inner join USUARIO u on u.IdUsuario = c.IdUsuario");
+                    query.AppendLine("inner join PROVEEDOR pr on pr.IdProveedor = c.IdProveedor");
+                    query.AppendLine("where c.NumeroDocumento = @numero");
+
+
+                    SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
+                    cmd.Parameters.AddWithValue("@numero", numero);
+>>>>>>> 7ab42f88e98eb044e7a945b29218bc6f3f55953d
                     cmd.CommandType = CommandType.Text;
 
                     oconexion.Open();
@@ -106,7 +172,11 @@ namespace CapaDatos
                     {
                         while (dr.Read())
                         {
+<<<<<<< HEAD
                             lista.Add(new Compra()
+=======
+                            obj = new Compra()
+>>>>>>> 7ab42f88e98eb044e7a945b29218bc6f3f55953d
                             {
                                 IdCompra = Convert.ToInt32(dr["IdCompra"]),
                                 oUsuario = new Usuario() { NombreCompleto = dr["NombreCompleto"].ToString() },
@@ -116,6 +186,7 @@ namespace CapaDatos
                                 NumeroDocumento = dr["NumeroDocumento"].ToString(),
                                 MontoTotal = Convert.ToDecimal(dr["MontoTotal"].ToString()),
                                 FechaRegistro = dr["FechaRegistro"].ToString()
+<<<<<<< HEAD
 
                             });
                         }
@@ -131,6 +202,24 @@ namespace CapaDatos
             return lista;
         }
 
+=======
+                            };
+                        }
+
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    obj = new Compra();
+                }
+            }
+            return obj;
+        }
+
+
+>>>>>>> 7ab42f88e98eb044e7a945b29218bc6f3f55953d
         public List<Detalle_Compra> ObtenerDetalleCompra(int idcompra)
         {
             List<Detalle_Compra> oLista = new List<Detalle_Compra>();

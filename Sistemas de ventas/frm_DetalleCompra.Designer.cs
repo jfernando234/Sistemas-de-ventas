@@ -65,6 +65,7 @@
             this.txtindice = new System.Windows.Forms.TextBox();
             this.txtid = new System.Windows.Forms.TextBox();
             this.btnseleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
+<<<<<<< HEAD
             this.Idcompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumeroDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +75,16 @@
             this.TipoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+=======
+            this.iddocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ruc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Razon_Social = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+>>>>>>> 7ab42f88e98eb044e7a945b29218bc6f3f55953d
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).BeginInit();
@@ -394,6 +405,7 @@
             this.dgvtotal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvtotal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnseleccionar,
+<<<<<<< HEAD
             this.Idcompra,
             this.NumeroDocumento,
             this.TipoDocumento,
@@ -409,13 +421,34 @@
             this.dgvtotal.Size = new System.Drawing.Size(556, 434);
             this.dgvtotal.TabIndex = 58;
             this.dgvtotal.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvtotal_CellContentClick);
+=======
+            this.iddocumento,
+            this.Fecha,
+            this.TipoDocumento,
+            this.Usuario,
+            this.Ruc,
+            this.Razon_Social,
+            this.TipoPago,
+            this.Total});
+            this.dgvtotal.Location = new System.Drawing.Point(684, 113);
+            this.dgvtotal.Name = "dgvtotal";
+            this.dgvtotal.ReadOnly = true;
+            this.dgvtotal.Size = new System.Drawing.Size(526, 434);
+            this.dgvtotal.TabIndex = 58;
+>>>>>>> 7ab42f88e98eb044e7a945b29218bc6f3f55953d
             // 
             // label13
             // 
             this.label13.BackColor = System.Drawing.Color.White;
+<<<<<<< HEAD
             this.label13.Location = new System.Drawing.Point(634, 9);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(590, 584);
+=======
+            this.label13.Location = new System.Drawing.Point(659, 9);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(565, 584);
+>>>>>>> 7ab42f88e98eb044e7a945b29218bc6f3f55953d
             this.label13.TabIndex = 57;
             // 
             // label14
@@ -454,6 +487,7 @@
             this.btnseleccionar.ReadOnly = true;
             this.btnseleccionar.Width = 50;
             // 
+<<<<<<< HEAD
             // Idcompra
             // 
             this.Idcompra.HeaderText = "Idcompra";
@@ -466,6 +500,20 @@
             this.NumeroDocumento.HeaderText = "Numero Documento";
             this.NumeroDocumento.Name = "NumeroDocumento";
             this.NumeroDocumento.ReadOnly = true;
+=======
+            // iddocumento
+            // 
+            this.iddocumento.HeaderText = "iddocumento";
+            this.iddocumento.Name = "iddocumento";
+            this.iddocumento.ReadOnly = true;
+            this.iddocumento.Visible = false;
+            // 
+            // Fecha
+            // 
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+>>>>>>> 7ab42f88e98eb044e7a945b29218bc6f3f55953d
             // 
             // TipoDocumento
             // 
@@ -488,12 +536,21 @@
             this.Ruc.ReadOnly = true;
             this.Ruc.Visible = false;
             // 
+<<<<<<< HEAD
             // RazonSocial
             // 
             this.RazonSocial.HeaderText = "Razon Social";
             this.RazonSocial.Name = "RazonSocial";
             this.RazonSocial.ReadOnly = true;
             this.RazonSocial.Width = 170;
+=======
+            // Razon_Social
+            // 
+            this.Razon_Social.HeaderText = "Razon Social";
+            this.Razon_Social.Name = "Razon_Social";
+            this.Razon_Social.ReadOnly = true;
+            this.Razon_Social.Width = 200;
+>>>>>>> 7ab42f88e98eb044e7a945b29218bc6f3f55953d
             // 
             // TipoPago
             // 
@@ -507,6 +564,7 @@
             this.Total.HeaderText = "Total";
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
+<<<<<<< HEAD
             this.Total.Width = 80;
             // 
             // Fecha
@@ -514,6 +572,8 @@
             this.Fecha.HeaderText = "Fecha";
             this.Fecha.Name = "Fecha";
             this.Fecha.ReadOnly = true;
+=======
+>>>>>>> 7ab42f88e98eb044e7a945b29218bc6f3f55953d
             // 
             // frm_DetalleCompra
             // 
@@ -589,6 +649,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtindice;
         private System.Windows.Forms.TextBox txtid;
+<<<<<<< HEAD
         private System.Windows.Forms.DataGridViewTextBoxColumn Razon_Social;
         private System.Windows.Forms.DataGridViewButtonColumn btnseleccionar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Idcompra;
@@ -600,5 +661,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+=======
+        private System.Windows.Forms.DataGridViewButtonColumn btnseleccionar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iddocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ruc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Razon_Social;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoPago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+>>>>>>> 7ab42f88e98eb044e7a945b29218bc6f3f55953d
     }
 }

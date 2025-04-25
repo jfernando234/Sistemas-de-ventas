@@ -191,7 +191,10 @@ namespace Sistemas_de_ventas
         {
 
         }
+<<<<<<< HEAD
 
         
+=======
+>>>>>>> 7ab42f88e98eb044e7a945b29218bc6f3f55953d
     }
 }
