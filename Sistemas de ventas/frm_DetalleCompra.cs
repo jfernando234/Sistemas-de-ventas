@@ -25,7 +25,6 @@ namespace Sistemas_de_ventas
 
         private void bntbuscar_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             if (dgvtotal.Rows.Count > 0)
             {
                 string busqueda = txtbusqueda.Text.Trim().ToUpper();
@@ -42,30 +41,6 @@ namespace Sistemas_de_ventas
                         row.Visible = false;
                     }
                 }
-=======
-            Compra oCompra = new CN_Compra().ObtenerCompra(txtbusqueda.Text);
-
-            if (oCompra.IdCompra != 0)
-            {
-
-                txtnumerodocumento.Text = oCompra.NumeroDocumento;
-
-                txtfecha.Text = oCompra.FechaRegistro;
-                txttipodocumento.Text = oCompra.TipoDocumento;
-                txttipopago.Text = oCompra.TipoPago;
-                txtusuario.Text = oCompra.oUsuario.NombreCompleto;
-                txtdocproveedor.Text = oCompra.oProveedor.Ruc;
-                txtnombreproveedor.Text = oCompra.oProveedor.RazonSocial;
-
-                dgvdata.Rows.Clear();
-                foreach (Detalle_Compra dc in oCompra.oDetalleCompra)
-                {
-                    dgvdata.Rows.Add(new object[] { dc.oProducto.Descripcion, dc.PrecioCompra, dc.Cantidad, dc.MontoTotal });
-                }
-
-                txtmontototal.Text = oCompra.MontoTotal.ToString("0.00");
-
->>>>>>> 7ab42f88e98eb044e7a945b29218bc6f3f55953d
             }
         }
 
@@ -120,11 +95,7 @@ namespace Sistemas_de_ventas
             Texto_Html = Texto_Html.Replace("@montototal", txtmontototal.Text);
 
             SaveFileDialog savefile = new SaveFileDialog();
-<<<<<<< HEAD
             savefile.FileName = string.Format("Compra_{0}.pdf", txtfecha.Text);
-=======
-            savefile.FileName = string.Format("Compra_{0}.pdf", txtnumerodocumento.Text);
->>>>>>> 7ab42f88e98eb044e7a945b29218bc6f3f55953d
             savefile.Filter = "Pdf Files|*.pdf";
 
             if (savefile.ShowDialog() == DialogResult.OK)
@@ -167,7 +138,6 @@ namespace Sistemas_de_ventas
 
             foreach (Compra item in lista)
             {
-<<<<<<< HEAD
                 dgvtotal.Rows.Add(new object[] {"",    
                     item.IdCompra,
                     item.NumeroDocumento,       
@@ -219,16 +189,5 @@ namespace Sistemas_de_ventas
                 }
             }
         }
-=======
-                dgvtotal.Rows.Add(new object[] {"",                  
-                    item.NumeroDocumento,              
-                    item.TipoDocumento,
-                    item.TipoPago,
-                    item.MontoTotal,
-                    item.FechaRegistro
-                });
-            }
-        }
->>>>>>> 7ab42f88e98eb044e7a945b29218bc6f3f55953d
     }
 }
