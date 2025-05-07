@@ -521,6 +521,7 @@
             this.label10.Size = new System.Drawing.Size(74, 13);
             this.label10.TabIndex = 36;
             this.label10.Text = "Total a Pagar:";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // txttotalpagar
             // 
@@ -530,6 +531,7 @@
             this.txttotalpagar.Size = new System.Drawing.Size(107, 20);
             this.txttotalpagar.TabIndex = 26;
             this.txttotalpagar.Text = "00";
+            this.txttotalpagar.TextChanged += new System.EventHandler(this.txttotalpagar_TextChanged);
             // 
             // bntregistrar
             // 

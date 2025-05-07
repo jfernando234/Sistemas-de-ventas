@@ -122,6 +122,7 @@ namespace Sistemas_de_ventas
             // 
             // menu
             // 
+            this.menu.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.menu.AutoSize = false;
             this.menu.BackColor = System.Drawing.Color.DimGray;
             this.menu.Dock = System.Windows.Forms.DockStyle.None;
@@ -138,7 +139,7 @@ namespace Sistemas_de_ventas
             this.menu.Location = new System.Drawing.Point(0, 75);
             this.menu.Name = "menu";
             this.menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menu.Size = new System.Drawing.Size(93, 1022);
+            this.menu.Size = new System.Drawing.Size(93, 735);
             this.menu.Stretch = false;
             this.menu.TabIndex = 0;
             this.menu.Text = "menuStrip1";
@@ -201,13 +202,6 @@ namespace Sistemas_de_ventas
             this.submenunegocio.Size = new System.Drawing.Size(125, 22);
             this.submenunegocio.Text = "Negocio";
             this.submenunegocio.Click += new System.EventHandler(this.submenunegocio_Click);
-            // 
-            // servicioToolStripMenuItem
-            // 
-            this.servicioToolStripMenuItem.Name = "servicioToolStripMenuItem";
-            this.servicioToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.servicioToolStripMenuItem.Text = "Servicio";
-            this.servicioToolStripMenuItem.Click += new System.EventHandler(this.servicioToolStripMenuItem_Click);
             // 
             // menuventas
             // 

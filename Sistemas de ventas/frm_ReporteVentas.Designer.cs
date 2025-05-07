@@ -269,11 +269,37 @@
             this.label1.Size = new System.Drawing.Size(822, 84);
             this.label1.TabIndex = 105;
             // 
+            // FechaRegistro
+            // 
+            this.FechaRegistro.HeaderText = "Fecha Registro";
+            this.FechaRegistro.Name = "FechaRegistro";
+            this.ClientSize = new System.Drawing.Size(1019, 658);
+            // 
+            this.NombreProducto.HeaderText = "Descripcion";
+            this.NombreProducto.Name = "NombreProducto";
+            this.NombreProducto.Width = 180;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            // 
+            // PrecioVenta
+            // 
+            this.PrecioVenta.HeaderText = "Precio Venta";
+            this.PrecioVenta.Name = "PrecioVenta";
+            // 
+            // SubTotal
+            // 
+            this.SubTotal.HeaderText = "Sub Total";
+            this.SubTotal.Name = "SubTotal";
+            // 
             // frm_ReporteVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1019, 658);
+            this.ClientSize = new System.Drawing.Size(1123, 654);
+            this.Controls.Add(this.dgvgeneral);
             this.Controls.Add(this.bntlimpiar);
             this.Controls.Add(this.txtbusqueda);
             this.Controls.Add(this.btnbuscar);

@@ -188,6 +188,24 @@ namespace Sistemas_de_ventas
             txttotalpagar.Text = totalFinal.ToString("0.00");
         }
 
+            // Sumar subtotales de servicios
+            if (dgvdataser.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dgvdataser.Rows)
+                {
+                    if (row.Cells["SubTotals"] != null && row.Cells["SubTotals"].Value != null)
+                    {
+                        totalServicios += Convert.ToDecimal(row.Cells["SubTotals"].Value);
+                    }
+                }
+            }
+
+            // Sumar totales de ambos
+            decimal totalFinal = totalProductos + totalServicios;
+
+            txttotalpagar.Text = totalFinal.ToString("0.00");
+        }
+
         private void limpiarProducto()
         {
             txtidproducto.Text = "0";
