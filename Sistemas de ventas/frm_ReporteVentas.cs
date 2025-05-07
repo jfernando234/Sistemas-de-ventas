@@ -32,22 +32,13 @@ namespace Sistemas_de_ventas
             cbobusqueda.ValueMember = "Valor";
             cbobusqueda.SelectedIndex = 0;
 
-            List<ReporteVenta> venta = new CN_Reportes().Venta2();
-            foreach (ReporteVenta item in venta)
-            {
-                dgvgeneral.Rows.Add(new object[] {
-                    item.NombreProducto,
-                    item.Cantidad,
-                    item.SubTotal
-                });
-            }
         }
 
         private void btnbuscarresultado_Click(object sender, EventArgs e)
         {
             List<ReporteVenta> lista = new List<ReporteVenta>();
 
-            lista = new CN_Reportes().Venta(
+            lista = new CN_Reportes().ListarDetalle(
                 txtfechainicio.Value.ToString(),
                 txtfechafin.Value.ToString()
                 );
@@ -58,13 +49,12 @@ namespace Sistemas_de_ventas
             foreach (ReporteVenta rc in lista)
             {
                 dgvdata.Rows.Add(new object[] {
-                    rc.FechaRegistro,
-                    rc.NombreProducto,
-                    rc.Cantidad,
-                    rc.PrecioVenta,
-                    rc.SubTotal
+                    rc.Id,
+                    rc.Descripcion,
+                    rc.TotalVendido,
+                    rc.PrecioUnitarioPromedio,
+                    rc.TotalDetalle
                 });
-
             }
         }
 

@@ -23,6 +23,7 @@ namespace Sistemas_de_ventas
 
         private void frm_Producto_Load(object sender, EventArgs e)
         {
+            txtfecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
             List<Categoria> listacategoria = new CN_Categoria().Listar().Where(c => c.Estado == true).ToList();
 
             foreach (Categoria item in listacategoria)
@@ -61,7 +62,8 @@ namespace Sistemas_de_ventas
                     item.Ubicacion,
                     item.PrecioVenta,
                     item.PrecioCompra,
-                    item.UnidadMedida, 
+                    item.PrecioLlevar,
+                    item.FechaRegistro,
                     item.oCategoria.IdCategoria,
                     item.oCategoria.Descripcion
                 });
@@ -79,8 +81,10 @@ namespace Sistemas_de_ventas
                 Descripcion = txtdescripcion.Text,              
                 Stock = Convert.ToInt32(txtstock.Text),
                 Ubicacion = txtubicacion.Text,
+                PrecioCompra = Convert.ToDecimal(txtpreciocompra.Text),
                 PrecioVenta = Convert.ToDecimal(txtprecioventa.Text),
-                UnidadMedida = txtunidadmedida.Text,
+                PrecioLlevar = Convert.ToDecimal(txtpreciollevar.Text),
+                FechaRegistro = txtfecha.Text,
                 oCategoria = new Categoria() { IdCategoria = Convert.ToInt32(((OpcionCombo)cbocategoria.SelectedItem).Valor) }
             };
 
@@ -98,9 +102,10 @@ namespace Sistemas_de_ventas
                        txtdescripcion.Text,
                        txtstock.Text,
                        txtubicacion.Text,
-                       txtprecioventa.Text,
                        txtpreciocompra.Text,
-                       txtunidadmedida.Text,
+                       txtprecioventa.Text,                       
+                       txtpreciollevar.Text,
+                       txtfecha.Text,
                        ((OpcionCombo)cbocategoria.SelectedItem).Valor.ToString(),
                        ((OpcionCombo)cbocategoria.SelectedItem).Texto.ToString()
                     });
@@ -127,9 +132,9 @@ namespace Sistemas_de_ventas
                     row.Cells["Descripcion"].Value = txtdescripcion.Text;
                     row.Cells["Stock"].Value =txtstock.Text;
                     row.Cells["Ubicacion"].Value = txtubicacion.Text;
-                    row.Cells["PrecioVenta"].Value =txtprecioventa.Text;
-                    row.Cells["PrecioCompra"].Value =txtpreciocompra.Text;                   
-                    row.Cells["UnidadMedida"].Value = txtunidadmedida.Text;
+                    row.Cells["PrecioCompra"].Value = txtpreciocompra.Text;
+                    row.Cells["PrecioVenta"].Value =txtprecioventa.Text;                                   
+                    row.Cells["PrecioLlevar"].Value = txtpreciollevar.Text;
                     row.Cells["IdCategoria"].Value = ((OpcionCombo)cbocategoria.SelectedItem).Valor.ToString();
                     row.Cells["Categoria"].Value = ((OpcionCombo)cbocategoria.SelectedItem).Texto.ToString();
                     Limpiar();
@@ -152,7 +157,7 @@ namespace Sistemas_de_ventas
             txtpreciocompra.Text = "";
             txtubicacion.Text = "";
             txtstock.Text = "";
-            txtunidadmedida.Text = "";
+            txtpreciollevar.Text = "";
 
             txtcodigo.Select();
         }
@@ -199,16 +204,16 @@ namespace Sistemas_de_ventas
 
                 if (indice >= 0)
                 {
-
                     txtindice.Text = indice.ToString();
                     txtid.Text = dgvdata.Rows[indice].Cells["Id"].Value.ToString();
                     txtcodigo.Text = dgvdata.Rows[indice].Cells["Codigo"].Value.ToString();
                     txtdescripcion.Text = dgvdata.Rows[indice].Cells["Descripcion"].Value.ToString();                  
                     txtstock.Text = dgvdata.Rows[indice].Cells["Stock"].Value.ToString();
-                    txtubicacion.Text = dgvdata.Rows[indice].Cells["Ubicacion"].Value.ToString();
+                    txtubicacion.Text = dgvdata.Rows[indice].Cells["Ubicacion"].Value.ToString();                   
+                    txtpreciocompra.Text = dgvdata.Rows[indice].Cells["PrecioCompra"].Value.ToString();
                     txtprecioventa.Text = dgvdata.Rows[indice].Cells["PrecioVenta"].Value.ToString();
-                    txtpreciocompra.Text = dgvdata.Rows[indice].Cells["PrecioCompra"].Value.ToString();                   
-                    txtunidadmedida.Text = dgvdata.Rows[indice].Cells["UnidadMedida"].Value.ToString();
+                    txtpreciollevar.Text = dgvdata.Rows[indice].Cells["PrecioLlevar"].Value.ToString();
+                    txtfecha.Text = dgvdata.Rows[indice].Cells["Fecha"].Value.ToString();
 
                     foreach (OpcionCombo oc in cbocategoria.Items)
                     {
@@ -219,11 +224,7 @@ namespace Sistemas_de_ventas
                             break;
                         }
                     }
-
-
                 }
-
-
             }
         }
 

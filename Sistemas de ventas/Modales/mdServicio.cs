@@ -13,15 +13,15 @@ using System.Windows.Forms;
 
 namespace Sistemas_de_ventas.Modales
 {
-    public partial class mdProducto : Form
+    public partial class mdServicio : Form
     {
-        public Producto _Producto { get; set; }
-        public mdProducto()
+        public Servicio _Servicio = new Servicio();
+        public mdServicio()
         {
             InitializeComponent();
         }
 
-        private void mdProducto_Load(object sender, EventArgs e)
+        private void mdServicio_Load(object sender, EventArgs e)
         {
             foreach (DataGridViewColumn columna in dgvdata.Columns)
             {
@@ -35,24 +35,21 @@ namespace Sistemas_de_ventas.Modales
             cbobusqueda.ValueMember = "Valor";
             cbobusqueda.SelectedIndex = 0;
 
-            List<Producto> lista = new CN_Producto().Listar();
+            List<Servicio> lista = new CN_Servicio().Listar();
 
-            foreach (Producto item in lista)
+            foreach (Servicio item in lista)
             {
-                dgvdata.Rows.Add(new object[] {" ",
-                    item.IdProducto,
+                dgvdata.Rows.Add(new object[] {
+                    "",
+                    item.IdServicio,
                     item.Codigo,
                     item.Descripcion,
-                    item.Stock,
-                    item.Ubicacion,
-                    item.PrecioCompra,
-                    item.PrecioVenta,
-                    item.PrecioLlevar,
-                    item.FechaRegistro,
-                    item.oCategoria.Descripcion
+                    item.Cantidad,
+                    item.Precio,
+
                 });
             }
-        }      
+        }
         private void bntbuscar_Click(object sender, EventArgs e)
         {
             string columnaFiltro = ((OpcionCombo)cbobusqueda.SelectedItem).Valor.ToString();
@@ -78,24 +75,25 @@ namespace Sistemas_de_ventas.Modales
                 row.Visible = true;
             }
         }
-        private void dgvdata_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
-        {
+        public Servicio ServicioSelecionado { get; set; }
 
+        private void dgvdata_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
             int iRow = e.RowIndex;
-            int iColum = e.ColumnIndex;
-            if (iRow >= 0 && iColum > 0)
+            if (iRow >= 0)
             {
-                _Producto = new Producto()
+                ServicioSelecionado = new Servicio()
                 {
-                    IdProducto = Convert.ToInt32(dgvdata.Rows[iRow].Cells["Id"].Value.ToString()),
-                    Codigo = dgvdata.Rows[iRow].Cells["Codigo"].Value.ToString(),
+                    IdServicio = Convert.ToInt32(dgvdata.Rows[iRow].Cells["Id"].Value),
                     Descripcion = dgvdata.Rows[iRow].Cells["Descripcion"].Value.ToString(),
-                    Stock = Convert.ToInt32(dgvdata.Rows[iRow].Cells["Stock"].Value.ToString()),
-                    PrecioVenta = Convert.ToDecimal(dgvdata.Rows[iRow].Cells["PrecioVenta"].Value.ToString()),
+                    Cantidad = Convert.ToInt32(dgvdata.Rows[iRow].Cells["Cantidad"].Value),
+                    Precio = Convert.ToDecimal(dgvdata.Rows[iRow].Cells["Precio"].Value)
                 };
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
         }
     }
+    
 }

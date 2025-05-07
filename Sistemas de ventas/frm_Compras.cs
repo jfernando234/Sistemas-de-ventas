@@ -101,7 +101,7 @@ namespace Sistemas_de_ventas
                 {
                     txtcodproducto.BackColor = Color.Honeydew;
                     txtidproducto.Text = oProducto.IdProducto.ToString();
-                    txtproducto.Text = oProducto.Nombre;
+                    txtproducto.Text = oProducto.Descripcion;
                     txtpreciocompra.Select();
                 }
                 else
@@ -117,6 +117,7 @@ namespace Sistemas_de_ventas
         {
             decimal preciocompra = 0;
             decimal precioventa = 0;
+            decimal preciollevar = 0;
             bool producto_existe = false;
 
             if (int.Parse(txtidproducto.Text) == 0)
@@ -138,6 +139,12 @@ namespace Sistemas_de_ventas
                 txtprecioventa.Select();
                 return;
             }
+            if (!decimal.TryParse(txtpreciollevar.Text, out preciollevar))
+            {
+                MessageBox.Show("Precio Cambio - Formato moneda incorrecto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtprecioventa.Select();
+                return;
+            }
 
             foreach (DataGridViewRow fila in dgvdata.Rows)
             {
@@ -156,6 +163,7 @@ namespace Sistemas_de_ventas
                     txtproducto.Text,
                     preciocompra.ToString("0.00"),
                     precioventa.ToString("0.00"),
+                    preciollevar.ToString("0.00"),
                     txtcantidad.Value.ToString(),
                     (txtcantidad.Value * preciocompra).ToString("0.00")
 
@@ -174,6 +182,7 @@ namespace Sistemas_de_ventas
             txtcodproducto.BackColor = Color.White;
             txtproducto.Text = "";
             txtpreciocompra.Text = "";
+            txtpreciollevar.Text = "";
             txtprecioventa.Text = "";
             txtcantidad.Value = 1;
         }
@@ -274,6 +283,7 @@ namespace Sistemas_de_ventas
             detalle_compra.Columns.Add("IdProducto", typeof(int));
             detalle_compra.Columns.Add("PrecioCompra", typeof(decimal));
             detalle_compra.Columns.Add("PrecioVenta", typeof(decimal));
+            detalle_compra.Columns.Add("PrecioLlevar", typeof(decimal));
             detalle_compra.Columns.Add("Cantidad", typeof(int));
             detalle_compra.Columns.Add("MontoTotal", typeof(decimal));
 
@@ -284,6 +294,7 @@ namespace Sistemas_de_ventas
                        Convert.ToInt32(row.Cells["IdProducto"].Value.ToString()),
                        row.Cells["PrecioCompra"].Value.ToString(),
                        row.Cells["PrecioVenta"].Value.ToString(),
+                       row.Cells["PrecioLlevar"].Value.ToString(),
                        row.Cells["Cantidad"].Value.ToString(),
                        row.Cells["SubTotal"].Value.ToString()
                     });
@@ -329,6 +340,40 @@ namespace Sistemas_de_ventas
 
         }
 
+        private void label10_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void txttotalpagar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (txtprecioventa.Text.Trim().Length == 0 && e.KeyChar.ToString() == ".")
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    if (Char.IsControl(e.KeyChar) || e.KeyChar.ToString() == ".")
+                    {
+                        e.Handled = false;
+                    }
+                    else
+                    {
+                        e.Handled = true;
+                    }
+                }
+            }
+        }
     }
 }

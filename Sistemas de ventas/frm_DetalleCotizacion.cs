@@ -81,6 +81,8 @@ namespace Sistemas_de_ventas
             Texto_Html = Texto_Html.Replace("@docnegocio", odatos.RUC);
             Texto_Html = Texto_Html.Replace("@direcnegocio", odatos.Direccion);
 
+            Texto_Html = Texto_Html.Replace("@tipodocumento", txttipodocumento.Text);
+
 
             Texto_Html = Texto_Html.Replace("@placa", txtPlaca.Text);
             Texto_Html = Texto_Html.Replace("@nombrecliente", txtnombrecliente.Text);
@@ -88,8 +90,8 @@ namespace Sistemas_de_ventas
             string filas = string.Empty;
             foreach (DataGridViewRow row in dgvdata.Rows)
             {
-                filas += "<tr>";
-                filas += "<td>" + row.Cells["NombreProducto"].Value.ToString() + "</td>";
+                filas += "<tr>";                
+                filas += "<td>" + row.Cells["Descripcionn"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["PrecioVenta"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Cantidad"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["SubTotal"].Value.ToString() + "</td>";
@@ -148,7 +150,7 @@ namespace Sistemas_de_ventas
                     txtPlaca.Text = dgvtotal.Rows[indice].Cells["Placa"].Value.ToString();
                     txtnombrecliente.Text = dgvtotal.Rows[indice].Cells["NombreCliente"].Value.ToString();
                     txttipodocumento.Text = dgvtotal.Rows[indice].Cells["TipoDocumento"].Value.ToString();
-                    txtdescripcion.Text = dgvtotal.Rows[indice].Cells["Descripcion"].Value.ToString();
+                    txtinfo.Text = dgvtotal.Rows[indice].Cells["Descripcion"].Value.ToString();
                     txtmontototal.Text = dgvtotal.Rows[indice].Cells["MontoTotal"].Value.ToString();
                     txtfecha.Text = dgvtotal.Rows[indice].Cells["FechaRegistro"].Value.ToString();
 
@@ -162,8 +164,9 @@ namespace Sistemas_de_ventas
                     foreach (Detalle_Venta item in detalleVenta)
                     {
                         dgvdata.Rows.Add(new object[] {
-                               item.oProducto.Descripcion,
-                               item.PrecioVenta,
+                               item.Id,
+                               item.Descripcion,
+                               item.Precio,
                                item.cantidad,
                                item.SubTotal
                         });

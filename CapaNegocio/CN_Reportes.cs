@@ -20,22 +20,11 @@ namespace CapaNegocio
         {
             return objcd_reporte.Compra2();
         }
-        public List<ReporteVenta> Venta(string fechainicio, string fechafin)
+        
+        public List<ReporteVenta> ListarDetalle(string fechainicio, string fechafin)
         {
-            return objcd_reporte.Venta(fechainicio, fechafin);
-        }
-        public List<ReporteVenta> Venta2()
-        {
-            return objcd_reporte.Venta2();
+            return objcd_reporte.listarDetalle(fechainicio,fechafin);
         }
 
-        public List<ReporteServicio> Servicio(string fechainicio, string fechafin)
-        {
-            return objcd_reporte.Servicio(fechainicio, fechafin);
-        }
-        public List<ReporteVenta> Balance()
-        {
-            return objcd_reporte.BalanceTotal();
-        }
     }
 }

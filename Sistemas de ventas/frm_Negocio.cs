@@ -85,5 +85,7 @@ namespace Sistemas_de_ventas
             else
                 MessageBox.Show("No se pudo guardar los cambios", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
+
+        
     }
 }

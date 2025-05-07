@@ -116,8 +116,9 @@ namespace Sistemas_de_ventas
                     foreach (Detalle_Venta item in detalleVenta)
                     {
                         dgvdata.Rows.Add(new object[] {
-                               item.oProducto.Descripcion,
-                               item.PrecioVenta,
+                               item.Id,
+                               item.Descripcion,
+                               item.Precio,
                                item.cantidad,
                                item.SubTotal
                         });
@@ -162,9 +163,9 @@ namespace Sistemas_de_ventas
             foreach (DataGridViewRow row in dgvdata.Rows)
             {
                 filas += "<tr>";
-                filas += "<td>" + row.Cells["NombreProducto"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["PrecioVenta"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Descripcion"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Cantidad"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Precio"].Value.ToString() + "</td>";              
                 filas += "<td>" + row.Cells["SubTotal"].Value.ToString() + "</td>";
                 filas += "</tr>";
             }
@@ -210,5 +211,7 @@ namespace Sistemas_de_ventas
                 }
             }
         }
+
+        
     }
 }

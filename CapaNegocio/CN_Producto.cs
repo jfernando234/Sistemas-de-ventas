@@ -28,11 +28,6 @@ namespace CapaNegocio
                 Mensaje += "Es necesario el codigo del Producto\n";
             }
 
-            if (obj.Nombre == "")
-            {
-                Mensaje += "Es necesario el nombre del Producto\n";
-            }
-
             if (obj.Descripcion == "")
             {
                 Mensaje += "Es necesario la Descripcion del Producto\n";
@@ -60,10 +55,6 @@ namespace CapaNegocio
                 Mensaje += "Es necesario el codigo del Producto\n";
             }
 
-            if (obj.Nombre == "")
-            {
-                Mensaje += "Es necesario el nombre del Producto\n";
-            }
 
             if (obj.Descripcion == "")
             {
@@ -97,14 +88,14 @@ namespace CapaNegocio
             {
                 productoData.InsertarProducto(
                     producto.Codigo, 
-                    producto.Descripcion, 
-                    producto.Categoria,
-                    producto.Ubicacion, 
-                    producto.Stock, 
-                    producto.PrecioCompra, 
+                    producto.Descripcion,                  
+                    producto.Stock,
+                    producto.Ubicacion,
+                    producto.PrecioCompra,
                     producto.PrecioVenta,
-                    producto.UnidadMedida,
-                    producto.FechaRegistro
+                    producto.PrecioLlevar,
+                    producto.FechaRegistro,
+                    producto.Categoria
                 );
             }
         }

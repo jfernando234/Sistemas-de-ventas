@@ -35,7 +35,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtdescripcion = new System.Windows.Forms.TextBox();
+            this.txtinfo = new System.Windows.Forms.TextBox();
             this.txtbusqueda = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtmontototal = new System.Windows.Forms.TextBox();
@@ -63,7 +63,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.dgvdata = new System.Windows.Forms.DataGridView();
-            this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcionn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,7 +84,7 @@
             this.bntbuscar.IconColor = System.Drawing.Color.Black;
             this.bntbuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.bntbuscar.IconSize = 16;
-            this.bntbuscar.Location = new System.Drawing.Point(1119, 53);
+            this.bntbuscar.Location = new System.Drawing.Point(1157, 68);
             this.bntbuscar.Name = "bntbuscar";
             this.bntbuscar.Size = new System.Drawing.Size(45, 22);
             this.bntbuscar.TabIndex = 124;
@@ -94,7 +95,7 @@
             // 
             // txtfecha
             // 
-            this.txtfecha.Location = new System.Drawing.Point(79, 53);
+            this.txtfecha.Location = new System.Drawing.Point(117, 68);
             this.txtfecha.Name = "txtfecha";
             this.txtfecha.ReadOnly = true;
             this.txtfecha.Size = new System.Drawing.Size(112, 20);
@@ -104,7 +105,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(33, 57);
+            this.label5.Location = new System.Drawing.Point(71, 72);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 116;
@@ -121,7 +122,7 @@
             this.bntlimpiar.IconColor = System.Drawing.Color.Black;
             this.bntlimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.bntlimpiar.IconSize = 17;
-            this.bntlimpiar.Location = new System.Drawing.Point(1170, 53);
+            this.bntlimpiar.Location = new System.Drawing.Point(1208, 68);
             this.bntlimpiar.Name = "bntlimpiar";
             this.bntlimpiar.Size = new System.Drawing.Size(41, 22);
             this.bntlimpiar.TabIndex = 125;
@@ -134,7 +135,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(197, 58);
+            this.label4.Location = new System.Drawing.Point(235, 73);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 13);
             this.label4.TabIndex = 117;
@@ -144,8 +145,8 @@
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.txtdescripcion);
-            this.groupBox2.Location = new System.Drawing.Point(277, 81);
+            this.groupBox2.Controls.Add(this.txtinfo);
+            this.groupBox2.Location = new System.Drawing.Point(315, 96);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(334, 73);
             this.groupBox2.TabIndex = 126;
@@ -161,17 +162,17 @@
             this.label8.TabIndex = 33;
             this.label8.Text = "Descripcion";
             // 
-            // txtdescripcion
+            // txtinfo
             // 
-            this.txtdescripcion.Location = new System.Drawing.Point(7, 39);
-            this.txtdescripcion.Name = "txtdescripcion";
-            this.txtdescripcion.ReadOnly = true;
-            this.txtdescripcion.Size = new System.Drawing.Size(321, 20);
-            this.txtdescripcion.TabIndex = 33;
+            this.txtinfo.Location = new System.Drawing.Point(7, 39);
+            this.txtinfo.Name = "txtinfo";
+            this.txtinfo.ReadOnly = true;
+            this.txtinfo.Size = new System.Drawing.Size(321, 20);
+            this.txtinfo.TabIndex = 33;
             // 
             // txtbusqueda
             // 
-            this.txtbusqueda.Location = new System.Drawing.Point(944, 55);
+            this.txtbusqueda.Location = new System.Drawing.Point(982, 70);
             this.txtbusqueda.Name = "txtbusqueda";
             this.txtbusqueda.Size = new System.Drawing.Size(169, 20);
             this.txtbusqueda.TabIndex = 123;
@@ -180,7 +181,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(901, 58);
+            this.label3.Location = new System.Drawing.Point(939, 73);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 122;
@@ -188,7 +189,7 @@
             // 
             // txtmontototal
             // 
-            this.txtmontototal.Location = new System.Drawing.Point(100, 481);
+            this.txtmontototal.Location = new System.Drawing.Point(138, 496);
             this.txtmontototal.Name = "txtmontototal";
             this.txtmontototal.ReadOnly = true;
             this.txtmontototal.Size = new System.Drawing.Size(60, 20);
@@ -198,7 +199,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(31, 484);
+            this.label10.Location = new System.Drawing.Point(69, 499);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(63, 13);
             this.label10.TabIndex = 134;
@@ -206,7 +207,7 @@
             // 
             // txttipodocumento
             // 
-            this.txttipodocumento.Location = new System.Drawing.Point(295, 53);
+            this.txttipodocumento.Location = new System.Drawing.Point(333, 68);
             this.txttipodocumento.Name = "txttipodocumento";
             this.txttipodocumento.ReadOnly = true;
             this.txttipodocumento.Size = new System.Drawing.Size(113, 20);
@@ -226,7 +227,7 @@
             this.Descripcion,
             this.MontoTotal,
             this.FechaRegistro});
-            this.dgvtotal.Location = new System.Drawing.Point(685, 81);
+            this.dgvtotal.Location = new System.Drawing.Point(723, 96);
             this.dgvtotal.Name = "dgvtotal";
             this.dgvtotal.ReadOnly = true;
             this.dgvtotal.Size = new System.Drawing.Size(526, 376);
@@ -293,7 +294,7 @@
             this.btndesarga.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btndesarga.IconColor = System.Drawing.Color.Black;
             this.btndesarga.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btndesarga.Location = new System.Drawing.Point(507, 484);
+            this.btndesarga.Location = new System.Drawing.Point(545, 499);
             this.btndesarga.Name = "btndesarga";
             this.btndesarga.Size = new System.Drawing.Size(113, 30);
             this.btndesarga.TabIndex = 129;
@@ -303,7 +304,7 @@
             // 
             // txtindice
             // 
-            this.txtindice.Location = new System.Drawing.Point(549, 28);
+            this.txtindice.Location = new System.Drawing.Point(587, 43);
             this.txtindice.Name = "txtindice";
             this.txtindice.Size = new System.Drawing.Size(26, 20);
             this.txtindice.TabIndex = 133;
@@ -312,7 +313,7 @@
             // 
             // txtid
             // 
-            this.txtid.Location = new System.Drawing.Point(581, 28);
+            this.txtid.Location = new System.Drawing.Point(619, 43);
             this.txtid.Name = "txtid";
             this.txtid.Size = new System.Drawing.Size(26, 20);
             this.txtid.TabIndex = 132;
@@ -324,7 +325,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(29, 21);
+            this.label2.Location = new System.Drawing.Point(67, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(192, 25);
             this.label2.TabIndex = 121;
@@ -338,7 +339,7 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtPlaca);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(36, 81);
+            this.groupBox1.Location = new System.Drawing.Point(74, 96);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(237, 73);
             this.groupBox1.TabIndex = 127;
@@ -388,7 +389,7 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(50, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(614, 518);
             this.label1.TabIndex = 120;
@@ -396,7 +397,7 @@
             // label11
             // 
             this.label11.BackColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(662, 9);
+            this.label11.Location = new System.Drawing.Point(700, 24);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(565, 518);
             this.label11.TabIndex = 130;
@@ -407,22 +408,30 @@
             this.dgvdata.BackgroundColor = System.Drawing.Color.White;
             this.dgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NombreProducto,
+            this.id,
+            this.Descripcionn,
             this.PrecioVenta,
             this.Cantidad,
             this.SubTotal});
-            this.dgvdata.Location = new System.Drawing.Point(36, 160);
+            this.dgvdata.Location = new System.Drawing.Point(74, 175);
             this.dgvdata.Name = "dgvdata";
             this.dgvdata.ReadOnly = true;
             this.dgvdata.Size = new System.Drawing.Size(577, 297);
             this.dgvdata.TabIndex = 136;
             // 
-            // NombreProducto
+            // id
             // 
-            this.NombreProducto.HeaderText = "Descripcion";
-            this.NombreProducto.Name = "NombreProducto";
-            this.NombreProducto.ReadOnly = true;
-            this.NombreProducto.Width = 230;
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // Descripcionn
+            // 
+            this.Descripcionn.HeaderText = "Descripcion";
+            this.Descripcionn.Name = "Descripcionn";
+            this.Descripcionn.ReadOnly = true;
+            this.Descripcionn.Width = 230;
             // 
             // PrecioVenta
             // 
@@ -446,7 +455,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1239, 666);
+            this.ClientSize = new System.Drawing.Size(1349, 666);
             this.Controls.Add(this.dgvdata);
             this.Controls.Add(this.bntbuscar);
             this.Controls.Add(this.txtfecha);
@@ -490,7 +499,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtdescripcion;
+        private System.Windows.Forms.TextBox txtinfo;
         private System.Windows.Forms.TextBox txtbusqueda;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtmontototal;
@@ -518,7 +527,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn MontoTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaRegistro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NombreProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcionn;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubTotal;

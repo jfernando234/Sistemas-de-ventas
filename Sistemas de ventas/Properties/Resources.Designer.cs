@@ -124,91 +124,28 @@ namespace Sistemas_de_ventas.Properties {
         ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
         ///&lt;html&gt;
         ///&lt;head&gt;
-        ///    &lt;title&gt;Web Page Design&lt;/title&gt;
+        ///    &lt;title&gt;Comprobante de Pago&lt;/title&gt;
         ///    &lt;style&gt;
-        ///        table.border {
-        ///            border-collapse: collapse;
+        ///        body {
+        ///            font-family: Arial, sans-serif;
+        ///            font-size: 11px;
+        ///            margin: 0;
+        ///            padding: 10px;
         ///        }
         ///
-        ///            table.border th {
-        ///                text-align: center;
-        ///                padding: 5px;
-        ///                border: 1px solid black;
-        ///            }
-        ///
-        ///            table.border td {
-        ///                text-align: center;
-        ///                padding: 5px;
-        ///                border: 1px solid black;
-        ///            }
-        ///    &lt;/style&gt;
-        ///&lt;/head&gt;
-        ///&lt;body&gt;
-        ///    &lt;tab [resto de la cadena truncado]&quot;;.
-        /// </summary>
-        internal static string PlantillaCservicio {
-            get {
-                return ResourceManager.GetString("PlantillaCservicio", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
-        ///&lt;html&gt;
-        ///&lt;head&gt;
-        ///    &lt;title&gt;Web Page Design&lt;/title&gt;
-        ///    &lt;style&gt;
-        ///        table.border {
-        ///            border-collapse: collapse;
+        ///        .centrado {
+        ///            text-align: center;
         ///        }
         ///
-        ///            table.border th {
-        ///                text-align: center;
-        ///                padding: 5px;
-        ///                border: 1px solid black;
-        ///            }
-        ///
-        ///            table.border td {
-        ///                text-align: center;
-        ///                padding: 5px;
-        ///                border: 1px solid black;
-        ///            }
-        ///    &lt;/style&gt;
-        ///&lt;/head&gt;
-        ///&lt;body&gt;
-        ///    &lt;tab [resto de la cadena truncado]&quot;;.
-        /// </summary>
-        internal static string PlantillaServicio {
-            get {
-                return ResourceManager.GetString("PlantillaServicio", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
-        ///&lt;html&gt;
-        ///&lt;head&gt;
-        ///    &lt;title&gt;Web Page Design&lt;/title&gt;
-        ///    &lt;style&gt;
-        ///        table.border {
-        ///            border-collapse: collapse;
+        ///        .comprobante {
+        ///            max-width: 300px;
+        ///            margin: auto;
         ///        }
         ///
-        ///            table.border th {
-        ///                text-align: center;
-        ///                padding: 5px;
-        ///                border: 1px solid black;
-        ///            }
-        ///
-        ///            table.border td {
-        ///                text-align: center;
-        ///                padding: 5px;
-        ///                border: 1px solid black;
-        ///            }
-        ///    &lt;/style&gt;
-        ///&lt;/head&gt;
-        ///&lt;body&gt;
-        ///    &lt;tab [resto de la cadena truncado]&quot;;.
+        ///        .datos-negocio, .datos-cliente, .detalle, .totales {
+        ///            margin-bottom: 10px;
+        ///        }
+        ///        /// [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string PlantillaVenta {
             get {

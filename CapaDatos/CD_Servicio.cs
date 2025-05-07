@@ -11,71 +11,139 @@ namespace CapaDatos
 {
     public class CD_Servicio
     {
-        public int ObtenerCorrelativo()
+        public List<Servicio> Listar()
         {
-            int idcorrelativo = 0;
-
+            List<Servicio> lista = new List<Servicio>();
             using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
             {
 
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("select count(*) + 1 from VENTA");
+                    query.AppendLine("select IdServicio,Codigo,Descripcion,Cantidad,Precio from SERVICIO"); 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;
 
                     oconexion.Open();
 
-                    idcorrelativo = Convert.ToInt32(cmd.ExecuteScalar());
-
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(new Servicio()
+                            {
+                                IdServicio = Convert.ToInt32(dr["IdServicio"]),
+                                Codigo = dr["Codigo"].ToString(),
+                                Descripcion = dr["Descripcion"].ToString(),
+                                Cantidad = Convert.ToInt32(dr["Cantidad"].ToString()),
+                                Precio = Convert.ToDecimal(dr["Precio"].ToString()),
+                                
+                            });
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
-                    idcorrelativo = 0;
+
+                    lista = new List<Servicio>();
                 }
             }
-            return idcorrelativo;
+            return lista;
         }
-        public bool Registrar(Venta obj, DataTable DetalleVenta, out string Mensaje)
+        public int Registrar(Servicio obj, out string Mensaje)
         {
-            bool Respuesta = false;
+            int idServiciogenerado = 0;
             Mensaje = string.Empty;
+
+
             try
             {
+
                 using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
                 {
-                    SqlCommand cmd = new SqlCommand("usp_RegistrarVenta", oconexion);
 
-                    cmd.Parameters.AddWithValue("TipoDocumento", obj.TipoDocumento);
-                    cmd.Parameters.AddWithValue("NumeroDocumento", obj.NumeroDocumento);
-                    cmd.Parameters.AddWithValue("NombreCliente", obj.NombreCliente);
-                    cmd.Parameters.AddWithValue("Placa", obj.Placa);
-                    cmd.Parameters.AddWithValue("Ruc", obj.Ruc);
-                    cmd.Parameters.AddWithValue("Kilometraje", obj.Kilometraje);
-                    cmd.Parameters.AddWithValue("MontoPago", obj.MontoPago);
-                    cmd.Parameters.AddWithValue("MontoCambio", obj.MontoCambio);
-                    cmd.Parameters.AddWithValue("MontoTotal", obj.MontoTotal);
-                    cmd.Parameters.AddWithValue("DetalleVenta", DetalleVenta);
-                    cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
+                    SqlCommand cmd = new SqlCommand("sp_RegistrarServicio", oconexion);
+                    cmd.Parameters.AddWithValue("Codigo", obj.Codigo);
+                    cmd.Parameters.AddWithValue("Descripcion", obj.Descripcion);
+                    cmd.Parameters.AddWithValue("Cantidad", obj.Cantidad);
+                    cmd.Parameters.AddWithValue("Precio", obj.Precio);
+                    cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     oconexion.Open();
+
                     cmd.ExecuteNonQuery();
 
-                    Respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
+                    idServiciogenerado = Convert.ToInt32(cmd.Parameters["Resultado"].Value);
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+
                 }
 
             }
             catch (Exception ex)
             {
-                Respuesta = false;
+                idServiciogenerado = 0;
                 Mensaje = ex.Message;
             }
 
-            return Respuesta;
+            return idServiciogenerado;
+        }
+        public bool Editar(Servicio obj, out string Mensaje)
+        {
+            bool respuesta = false;
+            Mensaje = string.Empty;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    SqlCommand cmd = new SqlCommand("SP_ModificarServicio", oconexion);
+                    cmd.Parameters.AddWithValue("IdServicio", obj.IdServicio);
+                    cmd.Parameters.AddWithValue("Codigo", obj.Codigo);
+                    cmd.Parameters.AddWithValue("Descripcion", obj.Descripcion);
+                    cmd.Parameters.AddWithValue("Cantidad", obj.Cantidad);
+                    cmd.Parameters.AddWithValue("Precio", obj.Precio);
+                    cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    oconexion.Open();
+                    cmd.ExecuteNonQuery();
+                    respuesta = Convert.ToBoolean(cmd.Parameters["Resultado"].Value);
+                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                respuesta = false;
+                Mensaje = ex.Message;
+            }
+            return respuesta;
+        }
+        public bool Eliminar(Servicio obj, out string Mensaje)
+        {
+            bool respuesta = false;
+            Mensaje = string.Empty;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+                {
+                    SqlCommand cmd = new SqlCommand("SP_EliminarServicio", oconexion);
+                    cmd.Parameters.AddWithValue("IdServicio", obj.IdServicio);
+                    cmd.Parameters.Add("Respuesta", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    oconexion.Open();
+                    cmd.ExecuteNonQuery();
+                    respuesta = Convert.ToBoolean(cmd.Parameters["Respuesta"].Value);
+                    Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                respuesta = false;
+                Mensaje = ex.Message;
+            }
+            return respuesta;
         }
     }
 }
