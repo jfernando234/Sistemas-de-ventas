@@ -71,7 +71,7 @@
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.label8 = new System.Windows.Forms.Label();
             this.txtpreciocompra = new System.Windows.Forms.TextBox();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnimportar = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -135,7 +135,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvdata.RowTemplate.Height = 28;
-            this.dgvdata.Size = new System.Drawing.Size(1014, 379);
+            this.dgvdata.Size = new System.Drawing.Size(1014, 372);
             this.dgvdata.TabIndex = 48;
             this.dgvdata.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellContentClick);
             // 
@@ -274,7 +274,6 @@
             this.txtid.Size = new System.Drawing.Size(25, 20);
             this.txtid.TabIndex = 50;
             this.txtid.Text = "0";
-            this.txtid.Visible = false;
             // 
             // txtindice
             // 
@@ -283,7 +282,6 @@
             this.txtindice.Size = new System.Drawing.Size(25, 20);
             this.txtindice.TabIndex = 56;
             this.txtindice.Text = "-1";
-            this.txtindice.Visible = false;
             // 
             // label9
             // 
@@ -306,7 +304,7 @@
             this.btneliminar.IconChar = FontAwesome.Sharp.IconChar.Trash;
             this.btneliminar.IconColor = System.Drawing.Color.White;
             this.btneliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btneliminar.IconSize = 20;
+            this.btneliminar.IconSize = 15;
             this.btneliminar.Location = new System.Drawing.Point(942, 142);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(82, 23);
@@ -452,7 +450,7 @@
             this.txtprecioventa.Name = "txtprecioventa";
             this.txtprecioventa.Size = new System.Drawing.Size(112, 20);
             this.txtprecioventa.TabIndex = 61;
-            this.txtprecioventa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtprecioventa_KeyPress);
+
             // 
             // lab
             // 
@@ -470,7 +468,7 @@
             this.txtstock.Name = "txtstock";
             this.txtstock.Size = new System.Drawing.Size(86, 20);
             this.txtstock.TabIndex = 64;
-            this.txtstock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtstock_KeyPress);
+
             // 
             // label6
             // 
@@ -518,33 +516,32 @@
             this.txtpreciocompra.Name = "txtpreciocompra";
             this.txtpreciocompra.Size = new System.Drawing.Size(143, 20);
             this.txtpreciocompra.TabIndex = 67;
-            this.txtpreciocompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtpreciocompra_KeyPress);
+
+            // btnimportar
             // 
-            // iconButton1
-            // 
-            this.iconButton1.BackColor = System.Drawing.Color.ForestGreen;
-            this.iconButton1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Share;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 16;
-            this.iconButton1.Location = new System.Drawing.Point(109, 49);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(86, 29);
-            this.iconButton1.TabIndex = 69;
-            this.iconButton1.Text = "Importar";
-            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            this.btnimportar.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnimportar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnimportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnimportar.ForeColor = System.Drawing.Color.White;
+            this.btnimportar.IconChar = FontAwesome.Sharp.IconChar.Share;
+            this.btnimportar.IconColor = System.Drawing.Color.White;
+            this.btnimportar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnimportar.IconSize = 16;
+            this.btnimportar.Location = new System.Drawing.Point(109, 49);
+            this.btnimportar.Name = "btnimportar";
+            this.btnimportar.Size = new System.Drawing.Size(86, 29);
+            this.btnimportar.TabIndex = 69;
+            this.btnimportar.Text = "Importar";
+            this.btnimportar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnimportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnimportar.UseVisualStyleBackColor = false;
+            this.btnimportar.Click += new System.EventHandler(this.btnimportar_Click);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.iconButton1);
+            this.panel3.Controls.Add(this.btnimportar);
             this.panel3.Controls.Add(this.dgvdata);
             this.panel3.Controls.Add(this.iconButton2);
             this.panel3.Controls.Add(this.cbobusqueda);
@@ -603,7 +600,6 @@
             // 
             this.txtfecha.Location = new System.Drawing.Point(17, 64);
             this.txtfecha.Name = "txtfecha";
-            this.txtfecha.ReadOnly = true;
             this.txtfecha.Size = new System.Drawing.Size(132, 20);
             this.txtfecha.TabIndex = 70;
             // 
@@ -666,7 +662,7 @@
         private FontAwesome.Sharp.IconButton iconButton2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtpreciocompra;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnimportar;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;

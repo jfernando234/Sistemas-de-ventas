@@ -82,6 +82,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(405, 183);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 13);
@@ -91,6 +92,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(405, 134);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
@@ -100,6 +102,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(405, 83);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 13);
@@ -125,6 +128,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(224, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 13);
@@ -158,15 +162,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(869, 394);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.bntsubir);
+            this.Controls.Add(this.picLogo);
             this.Controls.Add(this.txtguardar);
             this.Controls.Add(this.txtruc);
             this.Controls.Add(this.txtdireccion);
             this.Controls.Add(this.txtnombre);
-            this.Controls.Add(this.picLogo);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.bntsubir);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label10);
             this.Name = "frm_Negocio";

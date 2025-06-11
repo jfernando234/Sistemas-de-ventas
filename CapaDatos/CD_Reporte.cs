@@ -12,7 +12,7 @@ namespace CapaDatos
     public class CD_Reporte
     {
         //COMPRAS
-        public List<ReporteCompra> Compra(string fechainicio, string fechafin, int idproveedor)
+        public List<ReporteCompra> Compra(string fechainicio, string fechafin, int ruc)
         {
             List<ReporteCompra> lista = new List<ReporteCompra>();
 
@@ -24,7 +24,7 @@ namespace CapaDatos
                     SqlCommand cmd = new SqlCommand("sp_ReporteCompras", oconexion);
                     cmd.Parameters.AddWithValue("fechainicio", fechainicio);
                     cmd.Parameters.AddWithValue("fechafin", fechafin);
-                    cmd.Parameters.AddWithValue("idproveedor", idproveedor);
+                    cmd.Parameters.AddWithValue("ruc", ruc);
                     cmd.CommandType = CommandType.StoredProcedure;
                     oconexion.Open();
                     using (SqlDataReader dr = cmd.ExecuteReader())

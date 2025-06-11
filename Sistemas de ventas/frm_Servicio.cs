@@ -49,6 +49,11 @@ namespace Sistemas_de_ventas
                 });
             }
         }
+
+        public void Listar_productos()
+        {
+
+        }
         public void Limpiar()
         {
             txtprecio.Text = "";
@@ -83,6 +88,7 @@ namespace Sistemas_de_ventas
                        txtcodigo.Text,
                        txtdescripcion.Text,
                        1,
+                       txtprecio.Text,
                     });
 
                     Limpiar();

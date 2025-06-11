@@ -41,9 +41,8 @@ namespace CapaNegocio
             {
                 return objcd_Producto.Registrar(obj, out Mensaje);
             }
-
-
         }
+
         public bool Editar(Producto obj, out string Mensaje)
         {
 
@@ -71,33 +70,9 @@ namespace CapaNegocio
             }
         }
 
-
         public bool Eliminar(Producto obj, out string Mensaje)
         {
             return objcd_Producto.Eliminar(obj, out Mensaje);
-        }
-
-
-        private CD_Productos productoData = new CD_Productos();
-
-        public void CargarProductosDesdeExcel(string rutaArchivo)
-        {
-            List<Producto> productos = objcd_Producto.LeerExcel(rutaArchivo);
-
-            foreach (var producto in productos)
-            {
-                productoData.InsertarProducto(
-                    producto.Codigo, 
-                    producto.Descripcion,                  
-                    producto.Stock,
-                    producto.Ubicacion,
-                    producto.PrecioCompra,
-                    producto.PrecioVenta,
-                    producto.PrecioLlevar,
-                    producto.FechaRegistro,
-                    producto.Categoria
-                );
-            }
         }
 
     }

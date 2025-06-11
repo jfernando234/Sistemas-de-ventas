@@ -1,4 +1,6 @@
-﻿namespace Sistemas_de_ventas
+﻿using System.Windows.Forms;
+
+namespace Sistemas_de_ventas
 {
     partial class Inicio
     {
@@ -62,6 +64,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Teal;
+            this.label1.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.Location = new System.Drawing.Point(22, 14);
@@ -69,7 +72,6 @@
             this.label1.Size = new System.Drawing.Size(251, 31);
             this.label1.TabIndex = 2;
             this.label1.Text = "Sistemas de ventas";
-            this.label1.UseWaitCursor = true;
             // 
             // label2
             // 
@@ -81,7 +83,6 @@
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Usuario:";
-            this.label2.UseWaitCursor = true;
             // 
             // lbusuario
             // 
@@ -93,7 +94,6 @@
             this.lbusuario.Size = new System.Drawing.Size(49, 13);
             this.lbusuario.TabIndex = 5;
             this.lbusuario.Text = "lbusuario";
-            this.lbusuario.UseWaitCursor = true;
             // 
             // icnsalir
             // 
@@ -107,7 +107,6 @@
             this.icnsalir.Size = new System.Drawing.Size(61, 45);
             this.icnsalir.TabIndex = 6;
             this.icnsalir.UseVisualStyleBackColor = false;
-            this.icnsalir.UseWaitCursor = true;
             this.icnsalir.Click += new System.EventHandler(this.iconButton1_Click);
             // 
             // menutitulo
@@ -117,15 +116,12 @@
             this.menutitulo.Location = new System.Drawing.Point(0, 0);
             this.menutitulo.Name = "menutitulo";
             this.menutitulo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menutitulo.Size = new System.Drawing.Size(1394, 75);
+            this.menutitulo.Size = new System.Drawing.Size(1430, 75);
             this.menutitulo.TabIndex = 1;
             this.menutitulo.Text = "menuStrip2";
-            this.menutitulo.UseWaitCursor = true;
             // 
             // menu
             // 
-            this.menu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.menu.AutoSize = false;
             this.menu.BackColor = System.Drawing.Color.DimGray;
             this.menu.Dock = System.Windows.Forms.DockStyle.None;
@@ -142,11 +138,10 @@
             this.menu.Location = new System.Drawing.Point(0, 75);
             this.menu.Name = "menu";
             this.menu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menu.Size = new System.Drawing.Size(93, 747);
+            this.menu.Size = new System.Drawing.Size(93, 1022);
             this.menu.Stretch = false;
             this.menu.TabIndex = 0;
             this.menu.Text = "menuStrip1";
-            this.menu.UseWaitCursor = true;
             // 
             // menuusuario
             // 
@@ -186,7 +181,7 @@
             this.submenucategoria.IconColor = System.Drawing.Color.Black;
             this.submenucategoria.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.submenucategoria.Name = "submenucategoria";
-            this.submenucategoria.Size = new System.Drawing.Size(180, 22);
+            this.submenucategoria.Size = new System.Drawing.Size(125, 22);
             this.submenucategoria.Text = "Categoria";
             this.submenucategoria.Click += new System.EventHandler(this.submenucategoria_Click);
             // 
@@ -196,21 +191,21 @@
             this.submenuproducto.IconColor = System.Drawing.Color.Black;
             this.submenuproducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.submenuproducto.Name = "submenuproducto";
-            this.submenuproducto.Size = new System.Drawing.Size(180, 22);
+            this.submenuproducto.Size = new System.Drawing.Size(125, 22);
             this.submenuproducto.Text = "Producto";
             this.submenuproducto.Click += new System.EventHandler(this.submenuproducto_Click);
             // 
             // submenunegocio
             // 
             this.submenunegocio.Name = "submenunegocio";
-            this.submenunegocio.Size = new System.Drawing.Size(180, 22);
+            this.submenunegocio.Size = new System.Drawing.Size(125, 22);
             this.submenunegocio.Text = "Negocio";
             this.submenunegocio.Click += new System.EventHandler(this.submenunegocio_Click);
             // 
             // servicioToolStripMenuItem
             // 
             this.servicioToolStripMenuItem.Name = "servicioToolStripMenuItem";
-            this.servicioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.servicioToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.servicioToolStripMenuItem.Text = "Servicio";
             this.servicioToolStripMenuItem.Click += new System.EventHandler(this.servicioToolStripMenuItem_Click);
             // 
@@ -379,24 +374,25 @@
             this.contenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.contenedor.Cursor = System.Windows.Forms.Cursors.Default;
             this.contenedor.Location = new System.Drawing.Point(96, 78);
             this.contenedor.Name = "contenedor";
-            this.contenedor.Size = new System.Drawing.Size(1307, 640);
-            this.contenedor.TabIndex = 3;
-            this.contenedor.UseWaitCursor = true;
+            this.contenedor.Size = new System.Drawing.Size(1334, 711);
+            this.contenedor.TabIndex = 7;
             // 
             // Inicio
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1394, 718);
+            this.ClientSize = new System.Drawing.Size(1430, 789);
+            this.Controls.Add(this.contenedor);
             this.Controls.Add(this.menu);
             this.Controls.Add(this.icnsalir);
             this.Controls.Add(this.lbusuario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menutitulo);
-            this.Controls.Add(this.contenedor);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menu;
             this.MaximizeBox = false;
@@ -404,7 +400,6 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistemas Ventas";
-            this.UseWaitCursor = true;
             this.Load += new System.EventHandler(this.Inicio_Load);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
@@ -435,12 +430,12 @@
         private FontAwesome.Sharp.IconMenuItem menureportes;
         private System.Windows.Forms.ToolStripMenuItem reporteComprasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteVentasToolStripMenuItem;
-        private System.Windows.Forms.Panel contenedor;
         private System.Windows.Forms.MenuStrip menutitulo;
         private FontAwesome.Sharp.IconMenuItem menucotizacion;
         private System.Windows.Forms.ToolStripMenuItem registrarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem detalleCotizacionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem servicioToolStripMenuItem;
+        private System.Windows.Forms.Panel contenedor;
     }
 }
 

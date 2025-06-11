@@ -51,6 +51,7 @@ namespace Sistemas_de_ventas
             txtpagocon.Text = "";
             txtcambio.Text = "";
             txttotalpagar.Text = "0";
+            txtidproducto.Text = "0";
         }
 
         private void bntbuscarcliente_Click(object sender, EventArgs e)
@@ -307,7 +308,7 @@ namespace Sistemas_de_ventas
                 string numeroDocumento = string.Format("{0:00000}", idcorrelativo);
 
                 SaveFileDialog savefile = new SaveFileDialog();
-                savefile.FileName = string.Format("Venta\n" + numeroDocumento + "\n.pdf");
+                savefile.FileName = string.Format("Venta_{0}.pdf", idcorrelativo.ToString());
                 savefile.Filter = "Pdf Files|*.pdf";
 
                 if (savefile.ShowDialog() == DialogResult.OK)
@@ -431,7 +432,7 @@ namespace Sistemas_de_ventas
             if (respuesta)
             {
 
-                var result = MessageBox.Show("Numero de venta generada:\n" + numeroDocumento + "\n\n¿Desea copiar al portapapeles?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                var result = MessageBox.Show("Numero de venta generada:\n" + numeroDocumento + "\n\n¿Desea Guardar el Comprobante?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                 if (result == DialogResult.Yes)
                     Clipboard.SetText(numeroDocumento);
@@ -569,7 +570,7 @@ namespace Sistemas_de_ventas
                 int index = e.RowIndex;
                 if (index >= 0)
                 {
-                    dgvdata.Rows.RemoveAt(index);
+                    dgvdataser.Rows.RemoveAt(index);
                     calcularTotal();
                 }
             }

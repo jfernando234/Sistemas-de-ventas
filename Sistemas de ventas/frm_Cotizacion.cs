@@ -291,25 +291,28 @@ namespace Sistemas_de_ventas
             Texto_Html = Texto_Html.Replace("@fecharegistro", txtfecha.Text);
             string filas = "";
 
+            
             foreach (DataGridViewRow row in dgvdata.Rows)
             {
-                filas += "<div class='detalle-item'>";
-                filas += "<label>" + row.Cells["Descripcion"].Value.ToString() + "</label>";
-                filas += "<label>Cant: " + row.Cells["Cantidad"].Value.ToString() +
-                         " | P.U.: " + row.Cells["Precio"].Value.ToString() +
-                         " | SubTotal: " + row.Cells["SubTotal"].Value.ToString() + "</label>";
-                filas += "</div>";
+                filas += "<tr>";
+                filas += "<td>" + row.Cells["Descripcion"].Value?.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Precio"].Value?.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Cantidad"].Value?.ToString() + "</td>";
+                filas += "<td>" + row.Cells["SubTotal"].Value?.ToString() + "</td>";
+                filas += "</tr>";
             }
 
+            
             foreach (DataGridViewRow row in dgvdataser.Rows)
             {
-                filas += "<div class='detalle-item'>";
-                filas += "<label>" + row.Cells["Descripcions"].Value.ToString() + "</label>";
-                filas += "<label>Cant: " + row.Cells["Cantidads"].Value.ToString() +
-                         " | P.U.: " + row.Cells["Precios"].Value.ToString() +
-                         " | SubTotal: " + row.Cells["SubTotals"].Value.ToString() + "</label>";
-                filas += "</div>";
+                filas += "<tr>";
+                filas += "<td>" + row.Cells["Descripcions"].Value?.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Precios"].Value?.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Cantidads"].Value?.ToString() + "</td>";
+                filas += "<td>" + row.Cells["SubTotals"].Value?.ToString() + "</td>";
+                filas += "</tr>";
             }
+
             Texto_Html = Texto_Html.Replace("@filas", filas);
             Texto_Html = Texto_Html.Replace("@montototal", txttotalpagar.Text);
 

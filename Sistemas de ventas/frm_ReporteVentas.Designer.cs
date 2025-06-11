@@ -35,6 +35,11 @@
             this.cbobusqueda = new System.Windows.Forms.ComboBox();
             this.exportarexcel = new FontAwesome.Sharp.IconButton();
             this.dgvdata = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.btnbuscarresultado = new FontAwesome.Sharp.IconButton();
             this.label7 = new System.Windows.Forms.Label();
@@ -43,11 +48,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtfechainicio = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,15 +149,44 @@
             this.Total});
             this.dgvdata.Location = new System.Drawing.Point(167, 159);
             this.dgvdata.Name = "dgvdata";
-            this.dgvdata.Size = new System.Drawing.Size(774, 471);
+            this.dgvdata.Size = new System.Drawing.Size(774, 455);
             this.dgvdata.TabIndex = 114;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.Width = 300;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad Total";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.Width = 110;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio Unitario Promedio";
+            this.Precio.Name = "Precio";
+            this.Precio.Width = 110;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total Vendido";
+            this.Total.Name = "Total";
+            this.Total.Width = 110;
             // 
             // label4
             // 
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(149, 105);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(825, 543);
+            this.label4.Size = new System.Drawing.Size(825, 531);
             this.label4.TabIndex = 113;
             // 
             // btnbuscarresultado
@@ -240,40 +269,11 @@
             this.label1.Size = new System.Drawing.Size(822, 84);
             this.label1.TabIndex = 105;
             // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Width = 300;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad Total";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Width = 110;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio Unitario Promedio";
-            this.Precio.Name = "Precio";
-            this.Precio.Width = 110;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Total Vendido";
-            this.Total.Name = "Total";
-            this.Total.Width = 110;
-            // 
             // frm_ReporteVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1409, 690);
+            this.ClientSize = new System.Drawing.Size(1019, 658);
             this.Controls.Add(this.bntlimpiar);
             this.Controls.Add(this.txtbusqueda);
             this.Controls.Add(this.btnbuscar);

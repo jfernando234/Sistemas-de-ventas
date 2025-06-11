@@ -36,6 +36,7 @@ namespace Sistemas_de_ventas
 
         private void Inicio_Load(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.Arrow;
             List<Permiso> ListaPermisos = new CN_Permiso().Listar(usuarioactual.IdUsuario);
             
             foreach (IconMenuItem iconmenu in menu.Items)

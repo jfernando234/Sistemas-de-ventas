@@ -1,5 +1,6 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
+using ClosedXML.Excel;
 using Sistemas_de_ventas.Modales;
 using Sistemas_de_ventas.Utilidades;
 using System;
@@ -120,7 +121,7 @@ namespace Sistemas_de_ventas
             decimal preciollevar = 0;
             bool producto_existe = false;
 
-            if (int.Parse(txtidproducto.Text) == 0)
+            if (txtcodproducto.Text.Trim() == "")
             {
                 MessageBox.Show("Debe seleccionar un producto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
@@ -148,7 +149,8 @@ namespace Sistemas_de_ventas
 
             foreach (DataGridViewRow fila in dgvdata.Rows)
             {
-                if (fila.Cells["IdProducto"].Value.ToString() == txtidproducto.Text)
+                if (fila.Cells["Codigo"].Value != null &&
+                    fila.Cells["Codigo"].Value.ToString().ToLower() == txtcodproducto.Text.ToLower())
                 {
                     producto_existe = true;
                     break;
@@ -157,22 +159,23 @@ namespace Sistemas_de_ventas
 
             if (!producto_existe)
             {
-
                 dgvdata.Rows.Add(new object[] {
-                    txtidproducto.Text,
+                    txtcodproducto.Text,
                     txtproducto.Text,
+                    txtcantidad.Value.ToString(),
+                    txtubicacion.Text,
                     preciocompra.ToString("0.00"),
                     precioventa.ToString("0.00"),
                     preciollevar.ToString("0.00"),
-                    txtcantidad.Value.ToString(),
-                    (txtcantidad.Value * preciocompra).ToString("0.00")
+                    txtfecha.Text,
+                    txtcategoria.Text,
+                    (txtcantidad.Value * preciocompra).ToString("0.00"),
+                    string.IsNullOrWhiteSpace(txtidproducto.Text) ? "" : txtidproducto.Text
 
                 });
-
                 calcularTotal();
                 limpiarProducto();
                 txtcodproducto.Select();
-
             }
         }
         private void limpiarProducto()
@@ -265,13 +268,22 @@ namespace Sistemas_de_ventas
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
-        {
-            if (Convert.ToInt32(txtidproveedor.Text) == 0)
+        {           
+            if(txtdocproveedor.Text == "")
             {
-                MessageBox.Show("Debe seleccionar un proveedor", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Debe ingresar el ruc del Proveedor", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-
+            if (txtcorrelativo.Text == "")
+            {
+                MessageBox.Show("Debe ingresar el El numero Documento", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            if (txtnombreproveedor.Text == "")
+            {
+                MessageBox.Show("Debe ingresar la Razon social del proveedor", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             if (dgvdata.Rows.Count < 1)
             {
                 MessageBox.Show("Debe ingresar productos en la compra", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -280,33 +292,42 @@ namespace Sistemas_de_ventas
 
             DataTable detalle_compra = new DataTable();
 
-            detalle_compra.Columns.Add("IdProducto", typeof(int));
+            detalle_compra.Columns.Add("Codigo", typeof(string));
+            detalle_compra.Columns.Add("Descripcion", typeof(string));
+            detalle_compra.Columns.Add("Cantidad", typeof(int));
+            detalle_compra.Columns.Add("Ubicacion", typeof(string));
             detalle_compra.Columns.Add("PrecioCompra", typeof(decimal));
             detalle_compra.Columns.Add("PrecioVenta", typeof(decimal));
             detalle_compra.Columns.Add("PrecioLlevar", typeof(decimal));
-            detalle_compra.Columns.Add("Cantidad", typeof(int));
+            detalle_compra.Columns.Add("FechaRegistro", typeof(string));
+            detalle_compra.Columns.Add("Categoria", typeof(string));
             detalle_compra.Columns.Add("MontoTotal", typeof(decimal));
+         
 
             foreach (DataGridViewRow row in dgvdata.Rows)
             {
                 detalle_compra.Rows.Add(
                     new object[] {
-                       Convert.ToInt32(row.Cells["IdProducto"].Value.ToString()),
+                       row.Cells["Codigo"].Value.ToString(),
+                       row.Cells["Descripcion"].Value.ToString(),
+                       row.Cells["Cantidad"].Value.ToString(),
+                       row.Cells["Ubicacion"].Value.ToString(),
                        row.Cells["PrecioCompra"].Value.ToString(),
                        row.Cells["PrecioVenta"].Value.ToString(),
                        row.Cells["PrecioLlevar"].Value.ToString(),
-                       row.Cells["Cantidad"].Value.ToString(),
-                       row.Cells["SubTotal"].Value.ToString()
+                       row.Cells["FechaRegistro"].Value.ToString(),
+                       row.Cells["Categoria"].Value.ToString(),
+                       row.Cells["SubTotal"].Value.ToString(),
+                       
                     });
 
             }
-
-            
-
+          
             Compra oCompra = new Compra()
             {
                 oUsuario = new Usuario() { IdUsuario = _Usuario.IdUsuario },
-                oProveedor = new Proveedor() { IdProveedor = Convert.ToInt32(txtidproveedor.Text) },
+                RazonSocial = txtnombreproveedor.Text,
+                Ruc = Convert.ToInt32(txtdocproveedor.Text),
                 TipoDocumento = ((OpcionCombo)cbotipodocumento.SelectedItem).Texto,
                 TipoPago = ((OpcionCombo)cmbtipopago.SelectedItem).Texto,
                 NumeroDocumento = txtcorrelativo.Text,
@@ -335,20 +356,6 @@ namespace Sistemas_de_ventas
             }
         }
 
-        private void txtfecha_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txttotalpagar_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -374,6 +381,131 @@ namespace Sistemas_de_ventas
                     }
                 }
             }
+        }
+
+        private void iconButton1_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Archivos Excel (*.xlsx)|*.xlsx",
+                Title = "Seleccionar Archivo Excel"
+            };
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string rutaArchivo = openFileDialog.FileName;
+
+                try
+                {
+                    List<Producto> productos = Leerdatos(rutaArchivo);
+
+                    // Obtener códigos ya cargados en el DataGridView
+                    HashSet<string> codigosExistentes = new HashSet<string>(
+                        dgvdata.Rows
+                            .Cast<DataGridViewRow>()
+                            .Where(row => row.Cells["Codigo"].Value != null)
+                            .Select(row => row.Cells["Codigo"].Value.ToString().ToLower())
+                    );
+
+                    // Filtrar productos no repetidos (ignorando mayúsculas/minúsculas)
+                    var nuevosProductos = productos
+                        .Where(p => !codigosExistentes.Contains(p.Codigo.ToLower()))
+                        .ToList();
+
+                    // Agregar al DataGridView
+                    foreach (var producto in nuevosProductos)
+                    {
+                        decimal subtotal = producto.PrecioCompra * producto.Stock;
+                        dgvdata.Rows.Add(
+                            producto.Codigo,
+                            producto.Descripcion,
+                            producto.Stock,
+                            producto.Ubicacion,
+                            producto.PrecioCompra,
+                            producto.PrecioVenta,
+                            producto.PrecioLlevar,
+                            producto.FechaRegistro,
+                            producto.Categoria,
+                            subtotal
+                        );
+                    }
+                    calcularTotal();
+                    MessageBox.Show("Productos cargados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al cargar productos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private List<Producto> Leerdatos(string rutaArchivo)
+        {
+            List<Producto> productos = new List<Producto>();
+
+            using (var workbook = new XLWorkbook(rutaArchivo))
+            {
+                var worksheet = workbook.Worksheet(1);
+                var rows = worksheet.RangeUsed().RowsUsed().Skip(1); // Asumiendo que la primera fila son encabezados
+
+                foreach (var row in rows)
+                {
+                    try
+                    {
+                        Producto producto = new Producto
+                        {
+                            Codigo = row.Cell(1).GetValue<string>().Trim(),
+                            Descripcion = row.Cell(2).GetValue<string>().Trim(),
+                            Stock = row.Cell(3).TryGetValue<int>(out int stock) ? stock : 0,
+                            Ubicacion = row.Cell(4).GetValue<string>().Trim(),
+                            PrecioCompra = row.Cell(5).TryGetValue<decimal>(out decimal precioCompra) ? precioCompra : 0m,
+                            PrecioVenta = row.Cell(6).TryGetValue<decimal>(out decimal precioVenta) ? precioVenta : 0m,
+                            PrecioLlevar = row.Cell(7).TryGetValue<decimal>(out decimal precioLlevar) ? precioLlevar : 0m,
+                            FechaRegistro = row.Cell(8).TryGetValue<DateTime>(out DateTime fecha) ? fecha.ToString("dd/MM/yyyy") : string.Empty,
+                            Categoria = row.Cell(9).GetValue<string>().Trim()
+                        };
+
+                        // Validar campos obligatorios
+                        if (!string.IsNullOrWhiteSpace(producto.Codigo) && !string.IsNullOrWhiteSpace(producto.Descripcion))
+                        {
+                            productos.Add(producto);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"Error en la fila {row.RowNumber()}: {ex.Message}");
+                    }
+                }
+            }
+
+            return productos;
+
+        }
+
+        private void txtdocproveedor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (txtdocproveedor.Text.Trim().Length == 0 && e.KeyChar.ToString() == ".")
+                {
+                    e.Handled = true;
+                }
+                else
+                {
+                    if (Char.IsControl(e.KeyChar) || e.KeyChar.ToString() == ".")
+                    {
+                        e.Handled = false;
+                    }
+                    else
+                    {
+                        e.Handled = true;
+                    }
+                }
+            }
+
         }
     }
 }
