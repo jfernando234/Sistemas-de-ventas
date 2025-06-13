@@ -24,7 +24,7 @@ namespace CapaNegocio
 
             if (obj.Nombre == "")
             {
-                Mensaje += "Es necesario el nombre\n";
+                Mensaje += "Es necesario el nombres\n";
             }
 
             if (obj.RUC == "")
