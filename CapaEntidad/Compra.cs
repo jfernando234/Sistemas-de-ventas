@@ -9,7 +9,8 @@ namespace CapaEntidad
     public class Compra
     {
         public int IdCompra { get; set; }
-        public Proveedor oProveedor { get; set; }
+        public string  RazonSocial { get; set; }
+        public int Ruc { get; set; }
         public Usuario oUsuario { get; set; }
         public string TipoDocumento { get; set; }
         public string TipoPago { get; set; }

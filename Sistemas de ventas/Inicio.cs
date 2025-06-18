@@ -31,13 +31,12 @@ namespace Sistemas_de_ventas
                 usuarioactual = new Usuario() { NombreCompleto = "PREDETERMINANDO", IdUsuario = 1 }; 
             }else
                 usuarioactual = objusuario;
-
-
             InitializeComponent();
         }
 
         private void Inicio_Load(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.Arrow;
             List<Permiso> ListaPermisos = new CN_Permiso().Listar(usuarioactual.IdUsuario);
             
             foreach (IconMenuItem iconmenu in menu.Items)
@@ -47,7 +46,6 @@ namespace Sistemas_de_ventas
                 {
                     iconmenu.Visible = false;
                 }
-
             }
             lbusuario.Text = usuarioactual.NombreCompleto;
         }
@@ -74,7 +72,6 @@ namespace Sistemas_de_ventas
 
             contenedor.Controls.Add(formulario);
             formulario.Show();
-
         }
 
         private void menuusuario_Click(object sender, EventArgs e)
@@ -105,7 +102,6 @@ namespace Sistemas_de_ventas
         private void submenuregistrarcompra_Click(object sender, EventArgs e)
         {
             Abrir_From(menucompras, new frm_Compras(usuarioactual));
-
         }
 
         private void submenuverdetallecompra_Click(object sender, EventArgs e)
@@ -122,21 +118,10 @@ namespace Sistemas_de_ventas
         {
             Abrir_From((IconMenuItem)sender, new frm_Proveedores());
         }
-       
 
         private void submenunegocio_Click(object sender, EventArgs e)
         {
              Abrir_From(menuventas, new frm_Negocio());
-        }
-
-        private void serviciosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Abrir_From(menuventas, new frm_Servicios());
-        }
-
-        private void verDetalleServicioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Abrir_From(menuventas, new frm_DetalleServicio());
         }
 
         private void reporteComprasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -149,11 +134,6 @@ namespace Sistemas_de_ventas
             Abrir_From(menureportes, new frm_ReporteVentas());
         }
 
-        private void reporteServiciosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Abrir_From(menureportes, new frm_ReporteServicios());
-        }
-
         private void iconButton1_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Desea salir?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -162,36 +142,23 @@ namespace Sistemas_de_ventas
             }
         }
 
-        private void productoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void servicioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Abrir_From(menuventas, new frm_Servicio());
+        }
+
+        private void registrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Abrir_From(menucotizacion, new frm_Cotizacion());
         }
 
-        private void serviciosToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Abrir_From(menucotizacion, new frm_serCotizacion());
-        }
 
-        private void productosToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void detalleCotizacionToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Abrir_From(menucotizacion, new frm_DetalleCotizacion());
         }
 
-        private void serviciosToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            Abrir_From(menucotizacion, new frm_DetalleSerCotizacion());
-        }
-
-        private void balanceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Abrir_From(menucotizacion, new frm_balance());
-        }
-
-        private void menumantenedor_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        
+       
     }
 }

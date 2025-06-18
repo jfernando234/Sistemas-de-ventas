@@ -14,11 +14,13 @@ namespace CapaEntidad
         public string MontoTotal { get; set; }
         public string Placa { get; set; }
         public string NombreCliente { get; set; }
-        public string CodigoProducto { get; set; }
-        public string NombreProducto { get; set; }
-        public string Categoria { get; set; }
-        public string PrecioVenta { get; set; }
-        public string Cantidad { get; set; }
+
+        public string Id { get; set; }
+        public string Descripcion { get; set; }
+        public int TotalVendido { get; set; }
+        public decimal PrecioUnitarioPromedio { get; set; }
+        public decimal TotalDetalle { get; set; }
+
         public string CantidadVe { get; set; }
         public string Balance { get; set; }
         public string CostoT { get; set; }

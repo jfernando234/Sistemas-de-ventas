@@ -22,7 +22,7 @@ namespace CapaDatos
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("select IdProducto, Codigo, p.Descripcion,c.IdCategoria,Stock,Ubicacion,PrecioVenta,PrecioCompra,p.UnidadMedida,c.Descripcion[DescripcionCategoria]  from PRODUCTO p");
+                    query.AppendLine("select IdProducto, Codigo, p.Descripcion,c.IdCategoria,Stock,Ubicacion,p.PrecioCompra,p.PrecioVenta,p.PrecioLlevar,c.Descripcion[DescripcionCategoria],convert(char(10),p.FechaRegistro,103)[FechaRegistro] from PRODUCTO p");
                     query.AppendLine("inner join CATEGORIA c on c.IdCategoria = p.IdCategoria");
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;
@@ -42,7 +42,8 @@ namespace CapaDatos
                                 Ubicacion = dr["Ubicacion"].ToString(),                                
                                 PrecioCompra = Convert.ToDecimal(dr["PrecioCompra"].ToString()),
                                 PrecioVenta = Convert.ToDecimal(dr["PrecioVenta"].ToString()),                                
-                                UnidadMedida = dr["UnidadMedida"].ToString(),
+                                PrecioLlevar = Convert.ToDecimal(dr["PrecioLlevar"].ToString()),
+                                FechaRegistro = Convert.ToString(dr["FechaRegistro"].ToString()),
                                 oCategoria = new Categoria() { IdCategoria = Convert.ToInt32(dr["IdCategoria"]), Descripcion = dr["DescripcionCategoria"].ToString() },
                             });
 
@@ -81,7 +82,8 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("Ubicacion", obj.Ubicacion);
                     cmd.Parameters.AddWithValue("PrecioVenta", obj.PrecioVenta);
                     cmd.Parameters.AddWithValue("PrecioCompra", obj.PrecioCompra);
-                    cmd.Parameters.AddWithValue("UnidadMedida", obj.UnidadMedida);
+                    cmd.Parameters.AddWithValue("PrecioLlevar", obj.PrecioLlevar);
+                    cmd.Parameters.AddWithValue("FechaRegistro", obj.FechaRegistro);
                     cmd.Parameters.AddWithValue("IdCategoria", obj.oCategoria.IdCategoria);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
@@ -102,8 +104,6 @@ namespace CapaDatos
                 idProductogenerado = 0;
                 Mensaje = ex.Message;
             }
-
-
 
             return idProductogenerado;
         }
@@ -130,7 +130,8 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("Ubicacion", obj.Ubicacion);
                     cmd.Parameters.AddWithValue("PrecioVenta", obj.PrecioVenta);
                     cmd.Parameters.AddWithValue("PrecioCompra", obj.PrecioCompra);
-                    cmd.Parameters.AddWithValue("UnidadMedida", obj.UnidadMedida);
+                    cmd.Parameters.AddWithValue("PrecioLlevar", obj.PrecioLlevar);
+                    cmd.Parameters.AddWithValue("FechaRegistro", obj.FechaRegistro);
                     cmd.Parameters.AddWithValue("IdCategoria", obj.oCategoria.IdCategoria);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
@@ -189,8 +190,8 @@ namespace CapaDatos
 
         public void InsertarProducto(
 
-            string codigo, string descripcion, string categoria,
-            string ubicacion, int stock, decimal precioCompra, decimal precioVenta, string unidadMedida, string fechaRegistro)
+            string codigo, string descripcion,
+            int stock, string ubicacion, decimal precioCompra, decimal precioVenta,decimal precioLlevar, string fechaRegistro, string categoria)
 
         {
             using (SqlConnection conn = new SqlConnection(Conexion.cadena))
@@ -199,14 +200,14 @@ namespace CapaDatos
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@Codigo", codigo);
-                cmd.Parameters.AddWithValue("@Descripcion", descripcion);
-                cmd.Parameters.AddWithValue("@Categoria", categoria);
-                cmd.Parameters.AddWithValue("@Ubicacion", ubicacion ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@Descripcion", descripcion);          
                 cmd.Parameters.AddWithValue("@Stock", stock);
+                cmd.Parameters.AddWithValue("@Ubicacion", ubicacion ?? (object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@PrecioCompra", precioCompra);
                 cmd.Parameters.AddWithValue("@PrecioVenta", precioVenta);
-                cmd.Parameters.AddWithValue("@UnidadMedida", unidadMedida ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@PrecioLlevar", precioLlevar);
                 cmd.Parameters.AddWithValue("@FechaRegistro", fechaRegistro);
+                cmd.Parameters.AddWithValue("@Categoria", categoria);
 
                 SqlParameter resultado = new SqlParameter("@Resultado", SqlDbType.Bit) { Direction = ParameterDirection.Output };
                 SqlParameter mensaje = new SqlParameter("@Mensaje", SqlDbType.VarChar, 500) { Direction = ParameterDirection.Output };
@@ -241,14 +242,14 @@ namespace CapaDatos
                         Producto producto = new Producto
                         {
                             Codigo = row.Cell(1).GetValue<string>().Trim(),
-                            Descripcion = row.Cell(2).GetValue<string>().Trim(),
-                            Categoria = row.Cell(3).GetValue<string>().Trim(),
+                            Descripcion = row.Cell(2).GetValue<string>().Trim(),                                                     
+                            Stock = row.Cell(3).TryGetValue<int>(out int stock) ? stock : 0, // Manejo seguro
                             Ubicacion = row.Cell(4).GetValue<string>().Trim(),
-                            Stock = row.Cell(5).TryGetValue<int>(out int stock) ? stock : 0, // Manejo seguro
-                            PrecioCompra = row.Cell(6).TryGetValue<decimal>(out decimal precioCompra) ? precioCompra : 0m,
-                            PrecioVenta = row.Cell(7).TryGetValue<decimal>(out decimal precioVenta) ? precioVenta : 0m,
-                            UnidadMedida = row.Cell(8).GetValue<string>().Trim(),
-                            FechaRegistro = row.Cell(9).GetValue<string>()
+                            PrecioCompra = row.Cell(5).TryGetValue<decimal>(out decimal precioCompra) ? precioCompra : 0m,
+                            PrecioVenta = row.Cell(6).TryGetValue<decimal>(out decimal precioVenta) ? precioVenta : 0m,
+                            PrecioLlevar = row.Cell(7).TryGetValue<decimal>(out decimal precioLlevar) ? precioLlevar : 0m,
+                            FechaRegistro = row.Cell(8).TryGetValue<DateTime>(out DateTime fecha) ? fecha.ToString("dd/MM/yyyy") : string.Empty,
+                            Categoria = row.Cell(9).GetValue<string>().Trim()
                         };
 
                         productos.Add(producto);

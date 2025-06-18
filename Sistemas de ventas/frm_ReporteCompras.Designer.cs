@@ -39,6 +39,12 @@
             this.btnbuscarresultado = new FontAwesome.Sharp.IconButton();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvdata = new System.Windows.Forms.DataGridView();
+            this.FechaRegistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MontoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exportarexcel = new FontAwesome.Sharp.IconButton();
             this.cbobusqueda = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -46,12 +52,6 @@
             this.txtbusqueda = new System.Windows.Forms.TextBox();
             this.bntlimpiar = new FontAwesome.Sharp.IconButton();
             this.dgvgeneral = new System.Windows.Forms.DataGridView();
-            this.FechaRegistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RazonSocial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MontoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalComprado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GastoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -184,6 +184,38 @@
             this.dgvdata.Size = new System.Drawing.Size(719, 450);
             this.dgvdata.TabIndex = 45;
             // 
+            // FechaRegistro
+            // 
+            this.FechaRegistro.HeaderText = "Fecha Registro";
+            this.FechaRegistro.Name = "FechaRegistro";
+            // 
+            // RazonSocial
+            // 
+            this.RazonSocial.HeaderText = "Razon Social";
+            this.RazonSocial.Name = "RazonSocial";
+            this.RazonSocial.Width = 130;
+            // 
+            // NombreProducto
+            // 
+            this.NombreProducto.HeaderText = "Descripcion";
+            this.NombreProducto.Name = "NombreProducto";
+            this.NombreProducto.Width = 145;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            // 
+            // PrecioCompra
+            // 
+            this.PrecioCompra.HeaderText = "Precio Compra";
+            this.PrecioCompra.Name = "PrecioCompra";
+            // 
+            // MontoTotal
+            // 
+            this.MontoTotal.HeaderText = "Monto Total";
+            this.MontoTotal.Name = "MontoTotal";
+            // 
             // exportarexcel
             // 
             this.exportarexcel.BackColor = System.Drawing.Color.ForestGreen;
@@ -282,38 +314,6 @@
             this.dgvgeneral.Name = "dgvgeneral";
             this.dgvgeneral.Size = new System.Drawing.Size(397, 450);
             this.dgvgeneral.TabIndex = 104;
-            // 
-            // FechaRegistro
-            // 
-            this.FechaRegistro.HeaderText = "Fecha Registro";
-            this.FechaRegistro.Name = "FechaRegistro";
-            // 
-            // RazonSocial
-            // 
-            this.RazonSocial.HeaderText = "Razon Social";
-            this.RazonSocial.Name = "RazonSocial";
-            this.RazonSocial.Width = 130;
-            // 
-            // NombreProducto
-            // 
-            this.NombreProducto.HeaderText = "Descripcion";
-            this.NombreProducto.Name = "NombreProducto";
-            this.NombreProducto.Width = 145;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // PrecioCompra
-            // 
-            this.PrecioCompra.HeaderText = "Precio Compra";
-            this.PrecioCompra.Name = "PrecioCompra";
-            // 
-            // MontoTotal
-            // 
-            this.MontoTotal.HeaderText = "Monto Total";
-            this.MontoTotal.Name = "MontoTotal";
             // 
             // NombreP
             // 

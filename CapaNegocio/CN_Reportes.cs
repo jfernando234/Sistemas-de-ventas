@@ -12,30 +12,19 @@ namespace CapaNegocio
     {
         private CD_Reporte objcd_reporte = new CD_Reporte();
 
-        public List<ReporteCompra> Compra(string fechainicio, string fechafin, int idproveedor)
+        public List<ReporteCompra> Compra(string fechainicio, string fechafin, int ruc)
         {
-            return objcd_reporte.Compra(fechainicio, fechafin, idproveedor);
+            return objcd_reporte.Compra(fechainicio, fechafin, ruc);
         }
         public List<ReporteCompra> Compra2()
         {
             return objcd_reporte.Compra2();
         }
-        public List<ReporteVenta> Venta(string fechainicio, string fechafin)
+        
+        public List<ReporteVenta> ListarDetalle(string fechainicio, string fechafin)
         {
-            return objcd_reporte.Venta(fechainicio, fechafin);
-        }
-        public List<ReporteVenta> Venta2()
-        {
-            return objcd_reporte.Venta2();
+            return objcd_reporte.listarDetalle(fechainicio,fechafin);
         }
 
-        public List<ReporteServicio> Servicio(string fechainicio, string fechafin)
-        {
-            return objcd_reporte.Servicio(fechainicio, fechafin);
-        }
-        public List<ReporteVenta> Balance()
-        {
-            return objcd_reporte.BalanceTotal();
-        }
     }
 }

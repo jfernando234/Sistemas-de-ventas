@@ -54,7 +54,8 @@ namespace CapaDatos
                 {
                     SqlCommand cmd = new SqlCommand("sp_RegistrarCompra", oconexion);
                     cmd.Parameters.AddWithValue("IdUsuario", obj.oUsuario.IdUsuario);
-                    cmd.Parameters.AddWithValue("IdProveedor", obj.oProveedor.IdProveedor);
+                    cmd.Parameters.AddWithValue("RazonSocial", obj.RazonSocial);
+                    cmd.Parameters.AddWithValue("Ruc", obj.Ruc);
                     cmd.Parameters.AddWithValue("TipoDocumento", obj.TipoDocumento);
                     cmd.Parameters.AddWithValue("TipoPago", obj.TipoPago);
                     cmd.Parameters.AddWithValue("NumeroDocumento", obj.NumeroDocumento);
@@ -91,11 +92,11 @@ namespace CapaDatos
                 {
 
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT c.IdCOMPRA,c.NumeroDocumento,c.TipoDocumento,u.NombreCompleto,");
-                    query.AppendLine("pr.Documento,pr.RazonSocial,c.TipoPago,c.MontoTotal,convert(char(10),c.FechaCreacion,103)[FechaRegistro]");
+                    query.AppendLine("SELECT c.IdCOMPRA,c.RazonSocial,c.Ruc,c.NumeroDocumento,c.TipoDocumento,u.NombreCompleto,");
+                    query.AppendLine("c.Ruc,c.RazonSocial,c.TipoPago,c.MontoTotal,convert(char(10),c.FechaCreacion,103)[FechaRegistro]");
                     query.AppendLine("FROM COMPRA c");
                     query.AppendLine("inner join USUARIO u on u.IdUsuario = c.IdUsuario");
-                    query.AppendLine("inner join PROVEEDOR pr on pr.IdProveedor = c.IdProveedor");
+                    
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;
@@ -110,7 +111,8 @@ namespace CapaDatos
                             {
                                 IdCompra = Convert.ToInt32(dr["IdCompra"]),
                                 oUsuario = new Usuario() { NombreCompleto = dr["NombreCompleto"].ToString() },
-                                oProveedor = new Proveedor() { Ruc = dr["Documento"].ToString(), RazonSocial = dr["RazonSocial"].ToString() },
+                                Ruc = Convert.ToInt32(dr["Ruc"].ToString()),
+                                RazonSocial = dr["RazonSocial"].ToString(),
                                 TipoDocumento = dr["TipoDocumento"].ToString(),
                                 TipoPago = dr["TipoPago"].ToString(),
                                 NumeroDocumento = dr["NumeroDocumento"].ToString(),

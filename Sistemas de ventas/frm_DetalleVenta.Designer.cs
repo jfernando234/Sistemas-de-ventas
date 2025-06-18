@@ -30,10 +30,6 @@
         {
             this.btndesarga = new FontAwesome.Sharp.IconButton();
             this.dgvdata = new System.Windows.Forms.DataGridView();
-            this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtkilometraje = new System.Windows.Forms.TextBox();
@@ -57,18 +53,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.dgvtotal = new System.Windows.Forms.DataGridView();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtid = new System.Windows.Forms.TextBox();
-            this.txtindice = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtmontopago = new System.Windows.Forms.TextBox();
-            this.txtmontototal = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtmontocambio = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtnumerodocumento = new System.Windows.Forms.TextBox();
-            this.txttipopago = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.btnseleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.IdVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumeroDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,6 +66,23 @@
             this.MontoCambio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MontoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaRegistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtid = new System.Windows.Forms.TextBox();
+            this.txtindice = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtmontopago = new System.Windows.Forms.TextBox();
+            this.txtmontototal = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtmontocambio = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtnumerodocumento = new System.Windows.Forms.TextBox();
+            this.txttipopago = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -93,7 +94,7 @@
             this.btndesarga.IconChar = FontAwesome.Sharp.IconChar.None;
             this.btndesarga.IconColor = System.Drawing.Color.Black;
             this.btndesarga.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btndesarga.Location = new System.Drawing.Point(525, 484);
+            this.btndesarga.Location = new System.Drawing.Point(1130, 497);
             this.btndesarga.Name = "btndesarga";
             this.btndesarga.Size = new System.Drawing.Size(113, 30);
             this.btndesarga.TabIndex = 49;
@@ -107,40 +108,16 @@
             this.dgvdata.BackgroundColor = System.Drawing.Color.White;
             this.dgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NombreProducto,
-            this.PrecioVenta,
+            this.Id,
+            this.Descripcion,
             this.Cantidad,
+            this.Precio,
             this.SubTotal});
-            this.dgvdata.Location = new System.Drawing.Point(54, 181);
+            this.dgvdata.Location = new System.Drawing.Point(657, 206);
             this.dgvdata.Name = "dgvdata";
             this.dgvdata.ReadOnly = true;
-            this.dgvdata.Size = new System.Drawing.Size(577, 297);
+            this.dgvdata.Size = new System.Drawing.Size(586, 285);
             this.dgvdata.TabIndex = 46;
-            // 
-            // NombreProducto
-            // 
-            this.NombreProducto.HeaderText = "Nombre";
-            this.NombreProducto.Name = "NombreProducto";
-            this.NombreProducto.ReadOnly = true;
-            this.NombreProducto.Width = 230;
-            // 
-            // PrecioVenta
-            // 
-            this.PrecioVenta.HeaderText = "Precio";
-            this.PrecioVenta.Name = "PrecioVenta";
-            this.PrecioVenta.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            // 
-            // SubTotal
-            // 
-            this.SubTotal.HeaderText = "SubTotal";
-            this.SubTotal.Name = "SubTotal";
-            this.SubTotal.ReadOnly = true;
             // 
             // label7
             // 
@@ -158,7 +135,7 @@
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.txtPlaca);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(52, 102);
+            this.groupBox1.Location = new System.Drawing.Point(657, 127);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(237, 73);
             this.groupBox1.TabIndex = 45;
@@ -201,7 +178,7 @@
             // 
             // txttipodocumento
             // 
-            this.txttipodocumento.Location = new System.Drawing.Point(442, 55);
+            this.txttipodocumento.Location = new System.Drawing.Point(1050, 64);
             this.txttipodocumento.Name = "txttipodocumento";
             this.txttipodocumento.ReadOnly = true;
             this.txttipodocumento.Size = new System.Drawing.Size(102, 20);
@@ -209,7 +186,7 @@
             // 
             // txtfecha
             // 
-            this.txtfecha.Location = new System.Drawing.Point(131, 54);
+            this.txtfecha.Location = new System.Drawing.Point(739, 63);
             this.txtfecha.Name = "txtfecha";
             this.txtfecha.ReadOnly = true;
             this.txtfecha.Size = new System.Drawing.Size(130, 20);
@@ -219,7 +196,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(331, 58);
+            this.label4.Location = new System.Drawing.Point(911, 67);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 13);
             this.label4.TabIndex = 1;
@@ -232,7 +209,7 @@
             this.groupBox2.Controls.Add(this.txtruc);
             this.groupBox2.Controls.Add(this.txtnombrecliente);
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Location = new System.Drawing.Point(297, 102);
+            this.groupBox2.Location = new System.Drawing.Point(909, 127);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(334, 73);
             this.groupBox2.TabIndex = 44;
@@ -277,7 +254,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(51, 57);
+            this.label5.Location = new System.Drawing.Point(659, 67);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 0;
@@ -294,7 +271,7 @@
             this.bntlimpiar.IconColor = System.Drawing.Color.Black;
             this.bntlimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.bntlimpiar.IconSize = 17;
-            this.bntlimpiar.Location = new System.Drawing.Point(1188, 53);
+            this.bntlimpiar.Location = new System.Drawing.Point(542, 62);
             this.bntlimpiar.Name = "bntlimpiar";
             this.bntlimpiar.Size = new System.Drawing.Size(41, 22);
             this.bntlimpiar.TabIndex = 43;
@@ -313,7 +290,7 @@
             this.bntbuscar.IconColor = System.Drawing.Color.Black;
             this.bntbuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.bntbuscar.IconSize = 16;
-            this.bntbuscar.Location = new System.Drawing.Point(1137, 53);
+            this.bntbuscar.Location = new System.Drawing.Point(491, 62);
             this.bntbuscar.Name = "bntbuscar";
             this.bntbuscar.Size = new System.Drawing.Size(45, 22);
             this.bntbuscar.TabIndex = 42;
@@ -324,7 +301,7 @@
             // 
             // txtbusqueda
             // 
-            this.txtbusqueda.Location = new System.Drawing.Point(962, 55);
+            this.txtbusqueda.Location = new System.Drawing.Point(316, 64);
             this.txtbusqueda.Name = "txtbusqueda";
             this.txtbusqueda.Size = new System.Drawing.Size(169, 20);
             this.txtbusqueda.TabIndex = 41;
@@ -333,7 +310,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(919, 58);
+            this.label3.Location = new System.Drawing.Point(273, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 40;
@@ -344,7 +321,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(47, 21);
+            this.label2.Location = new System.Drawing.Point(655, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(147, 25);
             this.label2.TabIndex = 39;
@@ -353,7 +330,7 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(30, 9);
+            this.label1.Location = new System.Drawing.Point(638, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(614, 518);
             this.label1.TabIndex = 38;
@@ -361,9 +338,9 @@
             // label11
             // 
             this.label11.BackColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(680, 9);
+            this.label11.Location = new System.Drawing.Point(34, 18);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(565, 518);
+            this.label11.Size = new System.Drawing.Size(572, 518);
             this.label11.TabIndex = 50;
             // 
             // dgvtotal
@@ -385,117 +362,12 @@
             this.MontoCambio,
             this.MontoTotal,
             this.FechaRegistro});
-            this.dgvtotal.Location = new System.Drawing.Point(703, 81);
+            this.dgvtotal.Location = new System.Drawing.Point(57, 90);
             this.dgvtotal.Name = "dgvtotal";
             this.dgvtotal.ReadOnly = true;
             this.dgvtotal.Size = new System.Drawing.Size(526, 376);
             this.dgvtotal.TabIndex = 52;
             this.dgvtotal.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvtotal_CellContentClick);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(331, 83);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(105, 13);
-            this.label8.TabIndex = 55;
-            this.label8.Text = "Numero Documento:";
-            // 
-            // txtid
-            // 
-            this.txtid.Location = new System.Drawing.Point(599, 28);
-            this.txtid.Name = "txtid";
-            this.txtid.Size = new System.Drawing.Size(26, 20);
-            this.txtid.TabIndex = 57;
-            this.txtid.Text = "0";
-            this.txtid.Visible = false;
-            // 
-            // txtindice
-            // 
-            this.txtindice.Location = new System.Drawing.Point(567, 28);
-            this.txtindice.Name = "txtindice";
-            this.txtindice.Size = new System.Drawing.Size(26, 20);
-            this.txtindice.TabIndex = 58;
-            this.txtindice.Text = "-1";
-            this.txtindice.Visible = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(49, 493);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(68, 13);
-            this.label9.TabIndex = 59;
-            this.label9.Text = "Monto Pago:";
-            // 
-            // txtmontopago
-            // 
-            this.txtmontopago.Location = new System.Drawing.Point(123, 490);
-            this.txtmontopago.Name = "txtmontopago";
-            this.txtmontopago.Size = new System.Drawing.Size(54, 20);
-            this.txtmontopago.TabIndex = 60;
-            // 
-            // txtmontototal
-            // 
-            this.txtmontototal.Location = new System.Drawing.Point(400, 490);
-            this.txtmontototal.Name = "txtmontototal";
-            this.txtmontototal.Size = new System.Drawing.Size(60, 20);
-            this.txtmontototal.TabIndex = 62;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(331, 493);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(63, 13);
-            this.label10.TabIndex = 61;
-            this.label10.Text = "Monto total:";
-            // 
-            // txtmontocambio
-            // 
-            this.txtmontocambio.Location = new System.Drawing.Point(267, 490);
-            this.txtmontocambio.Name = "txtmontocambio";
-            this.txtmontocambio.Size = new System.Drawing.Size(58, 20);
-            this.txtmontocambio.TabIndex = 64;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(183, 493);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(78, 13);
-            this.label15.TabIndex = 63;
-            this.label15.Text = "Monto Cambio:";
-            // 
-            // txtnumerodocumento
-            // 
-            this.txtnumerodocumento.Location = new System.Drawing.Point(442, 81);
-            this.txtnumerodocumento.Name = "txtnumerodocumento";
-            this.txtnumerodocumento.ReadOnly = true;
-            this.txtnumerodocumento.Size = new System.Drawing.Size(102, 20);
-            this.txtnumerodocumento.TabIndex = 65;
-            // 
-            // txttipopago
-            // 
-            this.txttipopago.Location = new System.Drawing.Point(131, 81);
-            this.txttipopago.Name = "txttipopago";
-            this.txttipopago.ReadOnly = true;
-            this.txttipopago.Size = new System.Drawing.Size(130, 20);
-            this.txttipopago.TabIndex = 67;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(51, 83);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(74, 13);
-            this.label16.TabIndex = 66;
-            this.label16.Text = "Tipo de Pago:";
             // 
             // btnseleccionar
             // 
@@ -586,11 +458,148 @@
             this.FechaRegistro.Name = "FechaRegistro";
             this.FechaRegistro.ReadOnly = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(911, 100);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(105, 13);
+            this.label8.TabIndex = 55;
+            this.label8.Text = "Numero Documento:";
+            // 
+            // txtid
+            // 
+            this.txtid.Location = new System.Drawing.Point(1207, 37);
+            this.txtid.Name = "txtid";
+            this.txtid.Size = new System.Drawing.Size(26, 20);
+            this.txtid.TabIndex = 57;
+            this.txtid.Text = "0";
+            this.txtid.Visible = false;
+            // 
+            // txtindice
+            // 
+            this.txtindice.Location = new System.Drawing.Point(1175, 37);
+            this.txtindice.Name = "txtindice";
+            this.txtindice.Size = new System.Drawing.Size(26, 20);
+            this.txtindice.TabIndex = 58;
+            this.txtindice.Text = "-1";
+            this.txtindice.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(654, 506);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(68, 13);
+            this.label9.TabIndex = 59;
+            this.label9.Text = "Monto Pago:";
+            // 
+            // txtmontopago
+            // 
+            this.txtmontopago.Location = new System.Drawing.Point(728, 503);
+            this.txtmontopago.Name = "txtmontopago";
+            this.txtmontopago.Size = new System.Drawing.Size(54, 20);
+            this.txtmontopago.TabIndex = 60;
+            // 
+            // txtmontototal
+            // 
+            this.txtmontototal.Location = new System.Drawing.Point(1005, 503);
+            this.txtmontototal.Name = "txtmontototal";
+            this.txtmontototal.Size = new System.Drawing.Size(60, 20);
+            this.txtmontototal.TabIndex = 62;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(936, 506);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(63, 13);
+            this.label10.TabIndex = 61;
+            this.label10.Text = "Monto total:";
+            // 
+            // txtmontocambio
+            // 
+            this.txtmontocambio.Location = new System.Drawing.Point(872, 503);
+            this.txtmontocambio.Name = "txtmontocambio";
+            this.txtmontocambio.Size = new System.Drawing.Size(58, 20);
+            this.txtmontocambio.TabIndex = 64;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(788, 506);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(78, 13);
+            this.label15.TabIndex = 63;
+            this.label15.Text = "Monto Cambio:";
+            // 
+            // txtnumerodocumento
+            // 
+            this.txtnumerodocumento.Location = new System.Drawing.Point(1050, 97);
+            this.txtnumerodocumento.Name = "txtnumerodocumento";
+            this.txtnumerodocumento.ReadOnly = true;
+            this.txtnumerodocumento.Size = new System.Drawing.Size(102, 20);
+            this.txtnumerodocumento.TabIndex = 65;
+            // 
+            // txttipopago
+            // 
+            this.txttipopago.Location = new System.Drawing.Point(739, 92);
+            this.txttipopago.Name = "txttipopago";
+            this.txttipopago.ReadOnly = true;
+            this.txttipopago.Size = new System.Drawing.Size(130, 20);
+            this.txttipopago.TabIndex = 67;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(659, 97);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(74, 13);
+            this.label16.TabIndex = 66;
+            this.label16.Text = "Tipo de Pago:";
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            this.Descripcion.Width = 230;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            // 
+            // SubTotal
+            // 
+            this.SubTotal.HeaderText = "SubTotal";
+            this.SubTotal.Name = "SubTotal";
+            this.SubTotal.ReadOnly = true;
+            // 
             // frm_DetalleVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 558);
+            this.ClientSize = new System.Drawing.Size(1346, 586);
             this.Controls.Add(this.txttipopago);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtnumerodocumento);
@@ -660,10 +669,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtruc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NombreProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SubTotal;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtid;
         private System.Windows.Forms.TextBox txtindice;
@@ -689,5 +694,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MontoCambio;
         private System.Windows.Forms.DataGridViewTextBoxColumn MontoTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaRegistro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubTotal;
     }
 }

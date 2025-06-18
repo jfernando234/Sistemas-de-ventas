@@ -117,7 +117,7 @@
     <Compile Include="Rol.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Venta.cs" />
-    <Compile Include="VentaServicio.cs" />
+    <Compile Include="Servicio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

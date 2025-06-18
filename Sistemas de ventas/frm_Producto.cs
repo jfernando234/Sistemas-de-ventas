@@ -23,6 +23,7 @@ namespace Sistemas_de_ventas
 
         private void frm_Producto_Load(object sender, EventArgs e)
         {
+            txtfecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
             List<Categoria> listacategoria = new CN_Categoria().Listar().Where(c => c.Estado == true).ToList();
 
             foreach (Categoria item in listacategoria)
@@ -47,29 +48,33 @@ namespace Sistemas_de_ventas
             cbobusqueda.SelectedIndex = 0;
 
             //MOSTRAR TODOS LOS USUARIOS
-            List<Producto> lista = new CN_Producto().Listar();
+            listar_producto();
+        }
 
-            foreach (Producto item in lista)
+        private void SoloDecimal(object sender, KeyPressEventArgs e)
+        {
+            TextBox txt = sender as TextBox;
+            if (Char.IsDigit(e.KeyChar) || Char.IsControl(e.KeyChar))
             {
-
-                dgvdata.Rows.Add(new object[] {
-                    "",
-                    item.IdProducto,
-                    item.Codigo,
-                    item.Descripcion,                  
-                    item.Stock,
-                    item.Ubicacion,
-                    item.PrecioVenta,
-                    item.PrecioCompra,
-                    item.UnidadMedida, 
-                    item.oCategoria.IdCategoria,
-                    item.oCategoria.Descripcion
-                });
+                e.Handled = false;
+            }
+            else if (e.KeyChar == '.' && !txt.Text.Contains("."))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
             }
         }
 
         private void btnguardar_Click(object sender, EventArgs e)
         {
+            txtstock.KeyPress += SoloDecimal;
+            txtpreciocompra.KeyPress += SoloDecimal;
+            txtpreciollevar.KeyPress += SoloDecimal;
+            txtprecioventa.KeyPress += SoloDecimal;
+
             string mensaje = string.Empty;
 
             Producto obj = new Producto()
@@ -79,8 +84,10 @@ namespace Sistemas_de_ventas
                 Descripcion = txtdescripcion.Text,              
                 Stock = Convert.ToInt32(txtstock.Text),
                 Ubicacion = txtubicacion.Text,
+                PrecioCompra = Convert.ToDecimal(txtpreciocompra.Text),
                 PrecioVenta = Convert.ToDecimal(txtprecioventa.Text),
-                UnidadMedida = txtunidadmedida.Text,
+                PrecioLlevar = Convert.ToDecimal(txtpreciollevar.Text),
+                FechaRegistro = txtfecha.Text,
                 oCategoria = new Categoria() { IdCategoria = Convert.ToInt32(((OpcionCombo)cbocategoria.SelectedItem).Valor) }
             };
 
@@ -98,9 +105,10 @@ namespace Sistemas_de_ventas
                        txtdescripcion.Text,
                        txtstock.Text,
                        txtubicacion.Text,
-                       txtprecioventa.Text,
                        txtpreciocompra.Text,
-                       txtunidadmedida.Text,
+                       txtprecioventa.Text,                       
+                       txtpreciollevar.Text,
+                       txtfecha.Text,
                        ((OpcionCombo)cbocategoria.SelectedItem).Valor.ToString(),
                        ((OpcionCombo)cbocategoria.SelectedItem).Texto.ToString()
                     });
@@ -127,9 +135,9 @@ namespace Sistemas_de_ventas
                     row.Cells["Descripcion"].Value = txtdescripcion.Text;
                     row.Cells["Stock"].Value =txtstock.Text;
                     row.Cells["Ubicacion"].Value = txtubicacion.Text;
-                    row.Cells["PrecioVenta"].Value =txtprecioventa.Text;
-                    row.Cells["PrecioCompra"].Value =txtpreciocompra.Text;                   
-                    row.Cells["UnidadMedida"].Value = txtunidadmedida.Text;
+                    row.Cells["PrecioCompra"].Value = txtpreciocompra.Text;
+                    row.Cells["PrecioVenta"].Value =txtprecioventa.Text;                                   
+                    row.Cells["PrecioLlevar"].Value = txtpreciollevar.Text;
                     row.Cells["IdCategoria"].Value = ((OpcionCombo)cbocategoria.SelectedItem).Valor.ToString();
                     row.Cells["Categoria"].Value = ((OpcionCombo)cbocategoria.SelectedItem).Texto.ToString();
                     Limpiar();
@@ -152,7 +160,7 @@ namespace Sistemas_de_ventas
             txtpreciocompra.Text = "";
             txtubicacion.Text = "";
             txtstock.Text = "";
-            txtunidadmedida.Text = "";
+            txtpreciollevar.Text = "";
 
             txtcodigo.Select();
         }
@@ -199,16 +207,16 @@ namespace Sistemas_de_ventas
 
                 if (indice >= 0)
                 {
-
                     txtindice.Text = indice.ToString();
                     txtid.Text = dgvdata.Rows[indice].Cells["Id"].Value.ToString();
                     txtcodigo.Text = dgvdata.Rows[indice].Cells["Codigo"].Value.ToString();
                     txtdescripcion.Text = dgvdata.Rows[indice].Cells["Descripcion"].Value.ToString();                  
                     txtstock.Text = dgvdata.Rows[indice].Cells["Stock"].Value.ToString();
-                    txtubicacion.Text = dgvdata.Rows[indice].Cells["Ubicacion"].Value.ToString();
+                    txtubicacion.Text = dgvdata.Rows[indice].Cells["Ubicacion"].Value.ToString();                   
+                    txtpreciocompra.Text = dgvdata.Rows[indice].Cells["PrecioCompra"].Value.ToString();
                     txtprecioventa.Text = dgvdata.Rows[indice].Cells["PrecioVenta"].Value.ToString();
-                    txtpreciocompra.Text = dgvdata.Rows[indice].Cells["PrecioCompra"].Value.ToString();                   
-                    txtunidadmedida.Text = dgvdata.Rows[indice].Cells["UnidadMedida"].Value.ToString();
+                    txtpreciollevar.Text = dgvdata.Rows[indice].Cells["PrecioLlevar"].Value.ToString();
+                    txtfecha.Text = dgvdata.Rows[indice].Cells["Fecha"].Value.ToString();
 
                     foreach (OpcionCombo oc in cbocategoria.Items)
                     {
@@ -219,11 +227,7 @@ namespace Sistemas_de_ventas
                             break;
                         }
                     }
-
-
                 }
-
-
             }
         }
 
@@ -315,90 +319,38 @@ namespace Sistemas_de_ventas
             }
         }
 
-        private void txtprecioventa_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                if (txtprecioventa.Text.Trim().Length == 0 && e.KeyChar.ToString() == ".")
-                {
-                    e.Handled = true;
-                }
-                else
-                {
-                    if (Char.IsControl(e.KeyChar) || e.KeyChar.ToString() == ".")
-                    {
-                        e.Handled = false;
-                    }
-                    else
-                    {
-                        e.Handled = true;
-                    }
-                }
+       
+        
+        
 
+
+        
+        public void listar_producto()
+        {
+            List<Producto> lista = new CN_Producto().Listar();
+
+            foreach (Producto item in lista)
+            {
+
+                dgvdata.Rows.Add(new object[] {
+                    "",
+                    item.IdProducto,
+                    item.Codigo,
+                    item.Descripcion,
+                    item.Stock,
+                    item.Ubicacion,
+                    item.PrecioVenta,
+                    item.PrecioCompra,
+                    item.PrecioLlevar,
+                    item.FechaRegistro,
+                    item.oCategoria.IdCategoria,
+                    item.oCategoria.Descripcion
+                });
             }
         }
-
-        private void txtpreciocompra_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                if (txtpreciocompra.Text.Trim().Length == 0 && e.KeyChar.ToString() == ".")
-                {
-                    e.Handled = true;
-                }
-                else
-                {
-                    if (Char.IsControl(e.KeyChar) || e.KeyChar.ToString() == ".")
-                    {
-                        e.Handled = false;
-                    }
-                    else
-                    {
-                        e.Handled = true;
-                    }
-                }
-
-            }
-        }
-
-        private void txtstock_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (Char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                if (txtstock.Text.Trim().Length == 0 && e.KeyChar.ToString() == ".")
-                {
-                    e.Handled = true;
-                }
-                else
-                {
-                    if (Char.IsControl(e.KeyChar) || e.KeyChar.ToString() == ".")
-                    {
-                        e.Handled = false;
-                    }
-                    else
-                    {
-                        e.Handled = true;
-                    }
-                }
-
-            }
-        }
-
-        private void iconButton1_Click(object sender, EventArgs e)
-        {
-            // Abrir cuadro de diálogo para seleccionar el archivo Excel
+        private void btnimportar_Click(object sender, EventArgs e)
+        {   
+            //  seleccionar el archivo Excel
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
                 Filter = "Archivos Excel (*.xlsx)|*.xlsx",
@@ -408,20 +360,23 @@ namespace Sistemas_de_ventas
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string rutaArchivo = openFileDialog.FileName; // Obtener la ruta del archivo seleccionado
-                CN_Producto negocio = new CN_Producto(); // Crear instancia de la capa de negocio
+                CN_CargarProductos negocio = new CN_CargarProductos(); // Crear instancia de la capa de negocio
 
                 try
                 {
                     // Llamar al método para cargar productos desde Excel
                     negocio.CargarProductosDesdeExcel(rutaArchivo);
                     MessageBox.Show("Productos cargados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    listar_producto();
                 }
                 catch (Exception ex)
                 {
-                    // Manejar errores
+
                     MessageBox.Show($"Error al cargar productos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
         }
     }
 }

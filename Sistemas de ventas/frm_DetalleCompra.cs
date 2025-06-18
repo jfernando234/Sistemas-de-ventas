@@ -142,9 +142,9 @@ namespace Sistemas_de_ventas
                     item.IdCompra,
                     item.NumeroDocumento,       
                     item.TipoDocumento,
-                    item.oUsuario,
-                    item.oProveedor.Ruc,
-                    item.oProveedor.RazonSocial,
+                    item.oUsuario.NombreCompleto,
+                    item.Ruc,
+                    item.RazonSocial,
                     item.TipoPago,
                     item.MontoTotal,
                     item.FechaRegistro,
@@ -162,10 +162,11 @@ namespace Sistemas_de_ventas
                 {
                     txtindice.Text = indice.ToString();
                     txtid.Text = dgvtotal.Rows[indice].Cells["IdCompra"].Value.ToString();
-                    txtnumerodocumento.Text = dgvtotal.Rows[indice].Cells["NumeroDocumento"].Value.ToString();
+                    txtnumerodocumento.Text = dgvtotal.Rows[indice].Cells["NumeroDocumento"].Value.ToString();                  
                     txttipodocumento.Text = dgvtotal.Rows[indice].Cells["TipoDocumento"].Value.ToString();
                     txtusuario.Text = dgvtotal.Rows[indice].Cells["Usuario"].Value.ToString();
                     txtdocproveedor.Text = dgvtotal.Rows[indice].Cells["Ruc"].Value.ToString();
+                    txtnombreproveedor.Text = dgvtotal.Rows[indice].Cells["RazonSocial"].Value.ToString();
                     txttipopago.Text = dgvtotal.Rows[indice].Cells["TipoPago"].Value.ToString();
                     txtmontototal.Text = dgvtotal.Rows[indice].Cells["Total"].Value.ToString();
                     txtfecha.Text = dgvtotal.Rows[indice].Cells["Fecha"].Value.ToString();

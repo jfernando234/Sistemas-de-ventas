@@ -23,14 +23,14 @@ namespace Sistemas_de_ventas
 
         private void bntbuscar_Click(object sender, EventArgs e)
         {
-            int idproveedor = Convert.ToInt32(((OpcionCombo)cboproveedor.SelectedItem).Valor.ToString());
+            int ruc = Convert.ToInt32(((OpcionCombo)cboproveedor.SelectedItem).Valor.ToString());
 
             List<ReporteCompra> lista = new List<ReporteCompra>();
 
             lista = new CN_Reportes().Compra(
                 txtfechainicio.Value.ToString(),
                 txtfechafin.Value.ToString(),
-                idproveedor
+                ruc
                 );
 
 
@@ -57,7 +57,7 @@ namespace Sistemas_de_ventas
             cboproveedor.Items.Add(new OpcionCombo() { Valor = 0, Texto = "TODOS" });
             foreach (Proveedor item in lista)
             {
-                cboproveedor.Items.Add(new OpcionCombo() { Valor = item.IdProveedor, Texto = item.RazonSocial });
+                cboproveedor.Items.Add(new OpcionCombo() { Valor = item.Ruc, Texto = item.RazonSocial });
             }
             cboproveedor.DisplayMember = "Texto";
             cboproveedor.ValueMember = "Valor";
@@ -175,5 +175,6 @@ namespace Sistemas_de_ventas
                 row.Visible = true;
             }
         }
+
     }
 }
