@@ -1,6 +1,7 @@
 ﻿using CapaEntidad;
 using CapaNegocio;
 using ClosedXML.Excel;
+using iTextSharp.text.pdf.qrcode;
 using Sistemas_de_ventas.Modales;
 using Sistemas_de_ventas.Utilidades;
 using System;
@@ -81,7 +82,10 @@ namespace Sistemas_de_ventas
                     txtidproducto.Text = modal._Producto.IdProducto.ToString();
                     txtcodproducto.Text = modal._Producto.Codigo;
                     txtproducto.Text = modal._Producto.Descripcion;
-                    txtpreciocompra.Select();
+                    txtpreciocompra.Text = Convert.ToString(modal._Producto.PrecioCompra);
+                    txtprecioventa.Text = Convert.ToString(modal._Producto.PrecioVenta);
+                    txtpreciollevar.Text = Convert.ToString(modal._Producto.PrecioLlevar);
+
                 }
                 else
                 {
@@ -163,12 +167,13 @@ namespace Sistemas_de_ventas
                     txtcodproducto.Text,
                     txtproducto.Text,
                     txtcantidad.Value.ToString(),
-                    txtubicacion.Text,
-                    preciocompra.ToString("0.00"),
-                    precioventa.ToString("0.00"),
-                    preciollevar.ToString("0.00"),
+                    txtpreciocompra.Text,
+                    txtprecioventa.Text,
+                    txtpreciollevar.Text,
+
+                    //txtubicacion.Text,
                     txtfecha.Text,
-                    txtcategoria.Text,
+                    //txtcategoria.Text,
                     (txtcantidad.Value * preciocompra).ToString("0.00"),
                     string.IsNullOrWhiteSpace(txtidproducto.Text) ? "" : txtidproducto.Text
 
@@ -267,6 +272,7 @@ namespace Sistemas_de_ventas
             }
         }
 
+
         private void iconButton1_Click(object sender, EventArgs e)
         {           
             if(txtdocproveedor.Text == "")
@@ -292,15 +298,15 @@ namespace Sistemas_de_ventas
 
             DataTable detalle_compra = new DataTable();
 
-            detalle_compra.Columns.Add("Codigo", typeof(string));
-            detalle_compra.Columns.Add("Descripcion", typeof(string));
+            detalle_compra.Columns.Add("IdProducto", typeof(string));
+            //detalle_compra.Columns.Add("Descripcion", typeof(string));
             detalle_compra.Columns.Add("Cantidad", typeof(int));
-            detalle_compra.Columns.Add("Ubicacion", typeof(string));
+            //detalle_compra.Columns.Add("Ubicacion", typeof(string));
             detalle_compra.Columns.Add("PrecioCompra", typeof(decimal));
             detalle_compra.Columns.Add("PrecioVenta", typeof(decimal));
             detalle_compra.Columns.Add("PrecioLlevar", typeof(decimal));
-            detalle_compra.Columns.Add("FechaRegistro", typeof(string));
-            detalle_compra.Columns.Add("Categoria", typeof(string));
+            //detalle_compra.Columns.Add("FechaRegistro", typeof(string));
+            //detalle_compra.Columns.Add("Categoria", typeof(string));
             detalle_compra.Columns.Add("MontoTotal", typeof(decimal));
          
 
@@ -308,15 +314,15 @@ namespace Sistemas_de_ventas
             {
                 detalle_compra.Rows.Add(
                     new object[] {
-                       row.Cells["Codigo"].Value.ToString(),
-                       row.Cells["Descripcion"].Value.ToString(),
+                       row.Cells["IdProducto"].Value.ToString(),
+                       //row.Cells["Descripcion"].Value.ToString(),
                        row.Cells["Cantidad"].Value.ToString(),
-                       row.Cells["Ubicacion"].Value.ToString(),
+                       //row.Cells["Ubicacion"].Value.ToString(),
                        row.Cells["PrecioCompra"].Value.ToString(),
                        row.Cells["PrecioVenta"].Value.ToString(),
                        row.Cells["PrecioLlevar"].Value.ToString(),
-                       row.Cells["FechaRegistro"].Value.ToString(),
-                       row.Cells["Categoria"].Value.ToString(),
+                       //row.Cells["FechaRegistro"].Value.ToString(),
+                       //row.Cells["Categoria"].Value.ToString(),
                        row.Cells["SubTotal"].Value.ToString(),
                        
                     });
@@ -505,6 +511,36 @@ namespace Sistemas_de_ventas
                     }
                 }
             }
+
+        }
+
+        private void txtpreciollevar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtprecioventa_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtpreciocompra_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

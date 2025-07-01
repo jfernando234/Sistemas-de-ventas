@@ -50,10 +50,7 @@ namespace Sistemas_de_ventas
             }
         }
 
-        public void Listar_productos()
-        {
-
-        }
+      
         public void Limpiar()
         {
             txtprecio.Text = "";
@@ -63,6 +60,11 @@ namespace Sistemas_de_ventas
 
         private void btnguardar_Click(object sender, EventArgs e)
         {
+            // Si la validación falla, no continuar
+            if (!validarDatos())
+            {
+                return;
+            }
             string mensaje = string.Empty;
 
             Servicio obj = new Servicio()
@@ -120,6 +122,27 @@ namespace Sistemas_de_ventas
                 }
             }
         }
+        private bool validarDatos()
+        {
+            // Validar campos obligatorios
+            if (string.IsNullOrWhiteSpace(txtcodigo.Text) ||
+                string.IsNullOrWhiteSpace(txtdescripcion.Text) ||
+                string.IsNullOrWhiteSpace(txtprecio.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos: Código, Descripción y Precio.", "Campos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Validar que el precio sea un número válido
+            decimal precio;
+            if (!decimal.TryParse(txtprecio.Text, out precio))
+            {
+                MessageBox.Show("Ingrese un precio válido.", "Precio inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
 
         private void bntlimpiarr_Click(object sender, EventArgs e)
         {
@@ -170,6 +193,32 @@ namespace Sistemas_de_ventas
                     txtdescripcion.Text = dgvdata.Rows[indice].Cells["Descripcion"].Value.ToString();
                     txtprecio.Text = dgvdata.Rows[indice].Cells["Precio"].Value.ToString();
                 }
+            }
+        }
+
+        private void bntbuscar_Click(object sender, EventArgs e)
+        {
+            string columnaFiltro = ((OpcionCombo)cbobusqueda.SelectedItem).Valor.ToString();
+
+            if (dgvdata.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dgvdata.Rows)
+                {
+
+                    if (row.Cells[columnaFiltro].Value.ToString().Trim().ToUpper().Contains(txtbusqueda.Text.Trim().ToUpper()))
+                        row.Visible = true;
+                    else
+                        row.Visible = false;
+                }
+            }
+        }
+
+        private void bntlimpiar_Click(object sender, EventArgs e)
+        {
+            txtbusqueda.Text = "";
+            foreach (DataGridViewRow row in dgvdata.Rows)
+            {
+                row.Visible = true;
             }
         }
     }

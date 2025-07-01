@@ -274,6 +274,7 @@
             this.txtid.Size = new System.Drawing.Size(25, 20);
             this.txtid.TabIndex = 50;
             this.txtid.Text = "0";
+            this.txtid.Visible = false;
             // 
             // txtindice
             // 
@@ -282,6 +283,7 @@
             this.txtindice.Size = new System.Drawing.Size(25, 20);
             this.txtindice.TabIndex = 56;
             this.txtindice.Text = "-1";
+            this.txtindice.Visible = false;
             // 
             // label9
             // 
@@ -450,7 +452,6 @@
             this.txtprecioventa.Name = "txtprecioventa";
             this.txtprecioventa.Size = new System.Drawing.Size(112, 20);
             this.txtprecioventa.TabIndex = 61;
-
             // 
             // lab
             // 
@@ -468,7 +469,6 @@
             this.txtstock.Name = "txtstock";
             this.txtstock.Size = new System.Drawing.Size(86, 20);
             this.txtstock.TabIndex = 64;
-
             // 
             // label6
             // 
@@ -516,7 +516,7 @@
             this.txtpreciocompra.Name = "txtpreciocompra";
             this.txtpreciocompra.Size = new System.Drawing.Size(143, 20);
             this.txtpreciocompra.TabIndex = 67;
-
+            // 
             // btnimportar
             // 
             this.btnimportar.BackColor = System.Drawing.Color.ForestGreen;

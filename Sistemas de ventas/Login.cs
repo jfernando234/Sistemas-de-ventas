@@ -29,15 +29,13 @@ namespace Sistemas_de_ventas
 
         private void bntingresar_Click(object sender, EventArgs e)
         {         
-
             Usuario ousuario = new CN_Usuario().Listar().Where(u => u.Documento == txtdocumento.Text && u.Clave == txtcontraseña.Text).FirstOrDefault();
-
             if (ousuario != null)
             {
-                if (!ousuario.Estado) // Si Estado es false, el usuario está inactivo
+                if (!ousuario.Estado) 
                 {
                     MessageBox.Show("El usuario está deshabilitado. Contacte al administrador.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return; // Salir del flujo para no continuar con el inicio de sesión
+                    return; 
                 }
  
                 Inicio from = new Inicio(ousuario);
@@ -49,10 +47,8 @@ namespace Sistemas_de_ventas
             }
             else
             {
-                MessageBox.Show(" No se encontro el usuario", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(" Contraseña Incorrecta", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-
-            
         }
 
         private void frm_closing(object sender, FormClosingEventArgs e)
@@ -60,11 +56,6 @@ namespace Sistemas_de_ventas
             txtdocumento.Text = "";
             txtcontraseña.Text = "";
             this.Show();
-        }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

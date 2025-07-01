@@ -109,7 +109,7 @@
             this.bntbuscar.IconColor = System.Drawing.Color.Black;
             this.bntbuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.bntbuscar.IconSize = 16;
-            this.bntbuscar.Location = new System.Drawing.Point(1085, 26);
+            this.bntbuscar.Location = new System.Drawing.Point(994, 34);
             this.bntbuscar.Name = "bntbuscar";
             this.bntbuscar.Size = new System.Drawing.Size(44, 23);
             this.bntbuscar.TabIndex = 86;
@@ -146,7 +146,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvdata.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvdata.RowTemplate.Height = 28;
-            this.dgvdata.Size = new System.Drawing.Size(927, 314);
+            this.dgvdata.Size = new System.Drawing.Size(833, 314);
             this.dgvdata.TabIndex = 80;
             this.dgvdata.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellContentClick);
             // 
@@ -205,7 +205,7 @@
             this.bntlimpiar.IconColor = System.Drawing.Color.Black;
             this.bntlimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.bntlimpiar.IconSize = 17;
-            this.bntlimpiar.Location = new System.Drawing.Point(1135, 26);
+            this.bntlimpiar.Location = new System.Drawing.Point(1044, 34);
             this.bntlimpiar.Name = "bntlimpiar";
             this.bntlimpiar.Size = new System.Drawing.Size(40, 23);
             this.bntlimpiar.TabIndex = 87;
@@ -216,7 +216,7 @@
             // 
             // txtbusqueda
             // 
-            this.txtbusqueda.Location = new System.Drawing.Point(965, 29);
+            this.txtbusqueda.Location = new System.Drawing.Point(874, 37);
             this.txtbusqueda.Name = "txtbusqueda";
             this.txtbusqueda.Size = new System.Drawing.Size(114, 20);
             this.txtbusqueda.TabIndex = 85;
@@ -225,7 +225,7 @@
             // 
             this.cbobusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbobusqueda.FormattingEnabled = true;
-            this.cbobusqueda.Location = new System.Drawing.Point(834, 28);
+            this.cbobusqueda.Location = new System.Drawing.Point(743, 36);
             this.cbobusqueda.Name = "cbobusqueda";
             this.cbobusqueda.Size = new System.Drawing.Size(125, 21);
             this.cbobusqueda.TabIndex = 84;
@@ -234,7 +234,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(767, 31);
+            this.label12.Location = new System.Drawing.Point(676, 39);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(61, 13);
             this.label12.TabIndex = 83;
@@ -257,7 +257,7 @@
             this.label10.Location = new System.Drawing.Point(259, 7);
             this.label10.Name = "label10";
             this.label10.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.label10.Size = new System.Drawing.Size(923, 73);
+            this.label10.Size = new System.Drawing.Size(833, 73);
             this.label10.TabIndex = 81;
             this.label10.Text = "Lista de Proveedores:";
             // 
@@ -409,7 +409,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1194, 428);
+            this.ClientSize = new System.Drawing.Size(1107, 428);
             this.Controls.Add(this.iconButton2);
             this.Controls.Add(this.txttelefono);
             this.Controls.Add(this.label6);

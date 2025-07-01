@@ -34,7 +34,6 @@ namespace Sistemas_de_ventas
             cbocategoria.ValueMember = "Valor";
             cbocategoria.SelectedIndex = 0;
 
-
             foreach (DataGridViewColumn columna in dgvdata.Columns)
             {
 
@@ -47,7 +46,7 @@ namespace Sistemas_de_ventas
             cbobusqueda.ValueMember = "Valor";
             cbobusqueda.SelectedIndex = 0;
 
-            //MOSTRAR TODOS LOS USUARIOS
+            
             listar_producto();
         }
 
@@ -106,7 +105,7 @@ namespace Sistemas_de_ventas
                        txtstock.Text,
                        txtubicacion.Text,
                        txtpreciocompra.Text,
-                       txtprecioventa.Text,                       
+                       txtprecioventa.Text,
                        txtpreciollevar.Text,
                        txtfecha.Text,
                        ((OpcionCombo)cbocategoria.SelectedItem).Valor.ToString(),
@@ -120,7 +119,6 @@ namespace Sistemas_de_ventas
                     MessageBox.Show(mensaje);
                 }
 
-
             }
             else
             {
@@ -131,12 +129,12 @@ namespace Sistemas_de_ventas
                     DataGridViewRow row = dgvdata.Rows[Convert.ToInt32(txtindice.Text)];
                     row.Cells["Id"].Value = txtid.Text;
                     row.Cells["Codigo"].Value = txtcodigo.Text;
-                    
+
                     row.Cells["Descripcion"].Value = txtdescripcion.Text;
-                    row.Cells["Stock"].Value =txtstock.Text;
+                    row.Cells["Stock"].Value = txtstock.Text;
                     row.Cells["Ubicacion"].Value = txtubicacion.Text;
                     row.Cells["PrecioCompra"].Value = txtpreciocompra.Text;
-                    row.Cells["PrecioVenta"].Value =txtprecioventa.Text;                                   
+                    row.Cells["PrecioVenta"].Value = txtprecioventa.Text;
                     row.Cells["PrecioLlevar"].Value = txtpreciollevar.Text;
                     row.Cells["IdCategoria"].Value = ((OpcionCombo)cbocategoria.SelectedItem).Valor.ToString();
                     row.Cells["Categoria"].Value = ((OpcionCombo)cbocategoria.SelectedItem).Texto.ToString();
@@ -319,12 +317,6 @@ namespace Sistemas_de_ventas
             }
         }
 
-       
-        
-        
-
-
-        
         public void listar_producto()
         {
             List<Producto> lista = new CN_Producto().Listar();
@@ -339,8 +331,8 @@ namespace Sistemas_de_ventas
                     item.Descripcion,
                     item.Stock,
                     item.Ubicacion,
-                    item.PrecioVenta,
                     item.PrecioCompra,
+                    item.PrecioVenta,
                     item.PrecioLlevar,
                     item.FechaRegistro,
                     item.oCategoria.IdCategoria,

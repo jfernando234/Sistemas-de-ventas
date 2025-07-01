@@ -31,6 +31,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.bntbuscar = new FontAwesome.Sharp.IconButton();
             this.dgvdata = new System.Windows.Forms.DataGridView();
+            this.btnseleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.IdServicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bntlimpiar = new FontAwesome.Sharp.IconButton();
             this.cbobusqueda = new System.Windows.Forms.ComboBox();
             this.txtbusqueda = new System.Windows.Forms.TextBox();
@@ -48,12 +54,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnseleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.IdServicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvdata)).BeginInit();
             this.panel2.SuspendLayout();
@@ -90,9 +90,11 @@
             this.bntbuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bntbuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bntbuscar.UseVisualStyleBackColor = false;
+            this.bntbuscar.Click += new System.EventHandler(this.bntbuscar_Click);
             // 
             // dgvdata
             // 
+            this.dgvdata.AllowUserToAddRows = false;
             this.dgvdata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvdata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnseleccionar,
@@ -106,6 +108,43 @@
             this.dgvdata.Size = new System.Drawing.Size(743, 287);
             this.dgvdata.TabIndex = 0;
             this.dgvdata.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellContentClick);
+            // 
+            // btnseleccionar
+            // 
+            this.btnseleccionar.HeaderText = "";
+            this.btnseleccionar.Name = "btnseleccionar";
+            this.btnseleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnseleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnseleccionar.Width = 50;
+            // 
+            // IdServicio
+            // 
+            this.IdServicio.HeaderText = "IdServicio";
+            this.IdServicio.Name = "IdServicio";
+            this.IdServicio.Visible = false;
+            // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.FillWeight = 200F;
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.Width = 450;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.Visible = false;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
             // 
             // bntlimpiar
             // 
@@ -125,6 +164,7 @@
             this.bntlimpiar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bntlimpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bntlimpiar.UseVisualStyleBackColor = false;
+            this.bntlimpiar.Click += new System.EventHandler(this.bntlimpiar_Click);
             // 
             // cbobusqueda
             // 
@@ -308,43 +348,6 @@
             this.label1.Size = new System.Drawing.Size(188, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Registrar Servicio:";
-            // 
-            // btnseleccionar
-            // 
-            this.btnseleccionar.HeaderText = "";
-            this.btnseleccionar.Name = "btnseleccionar";
-            this.btnseleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnseleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btnseleccionar.Width = 50;
-            // 
-            // IdServicio
-            // 
-            this.IdServicio.HeaderText = "IdServicio";
-            this.IdServicio.Name = "IdServicio";
-            this.IdServicio.Visible = false;
-            // 
-            // Codigo
-            // 
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.FillWeight = 200F;
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Width = 450;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Visible = false;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
             // 
             // frm_Servicio
             // 

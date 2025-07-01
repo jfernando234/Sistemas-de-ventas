@@ -91,7 +91,9 @@ namespace Sistemas_de_ventas.Modales
                     Codigo = dgvdata.Rows[iRow].Cells["Codigo"].Value.ToString(),
                     Descripcion = dgvdata.Rows[iRow].Cells["Descripcion"].Value.ToString(),
                     Stock = Convert.ToInt32(dgvdata.Rows[iRow].Cells["Stock"].Value.ToString()),
+                    PrecioCompra = Convert.ToDecimal(dgvdata.Rows[iRow].Cells["PrecioCompra"].Value.ToString()),
                     PrecioVenta = Convert.ToDecimal(dgvdata.Rows[iRow].Cells["PrecioVenta"].Value.ToString()),
+                    PrecioLlevar = Convert.ToDecimal(dgvdata.Rows[iRow].Cells["PrecioLlevar"].Value.ToString()),
                 };
                 this.DialogResult = DialogResult.OK;
                 this.Close();

@@ -139,7 +139,6 @@ namespace Sistemas_de_ventas
             txtconfirmarclave.Text = "";
             cborol.SelectedItem = 0;
             cboestado.SelectedIndex = 0;
-
             txtdocumento.Select();
         }
 
@@ -182,9 +181,6 @@ namespace Sistemas_de_ventas
                 }
 
             }
-
-
-
         }
 
         private void btneliminar_Click(object sender, EventArgs e)
