@@ -67,10 +67,6 @@
             this.txtcodproducto = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvdata = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txttotalpagar = new System.Windows.Forms.TextBox();
-            this.bntregistrar = new FontAwesome.Sharp.IconButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,6 +79,10 @@
             this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btneliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txttotalpagar = new System.Windows.Forms.TextBox();
+            this.bntregistrar = new FontAwesome.Sharp.IconButton();
+            this.btnImportar = new FontAwesome.Sharp.IconButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -370,7 +370,7 @@
             // 
             // txtcantidad
             // 
-            this.txtcantidad.Location = new System.Drawing.Point(646, 45);
+            this.txtcantidad.Location = new System.Drawing.Point(646, 43);
             this.txtcantidad.Minimum = new decimal(new int[] {
             1,
             0,
@@ -388,7 +388,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(643, 29);
+            this.label11.Location = new System.Drawing.Point(643, 26);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(52, 13);
             this.label11.TabIndex = 35;
@@ -512,62 +512,6 @@
             this.dgvdata.TabIndex = 26;
             this.dgvdata.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvdata_CellContentClick);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(1165, 492);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(74, 13);
-            this.label10.TabIndex = 36;
-            this.label10.Text = "Total a Pagar:";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
-            // 
-            // txttotalpagar
-            // 
-            this.txttotalpagar.Location = new System.Drawing.Point(1152, 508);
-            this.txttotalpagar.Name = "txttotalpagar";
-            this.txttotalpagar.ReadOnly = true;
-            this.txttotalpagar.Size = new System.Drawing.Size(107, 20);
-            this.txttotalpagar.TabIndex = 26;
-            this.txttotalpagar.Text = "00";
-            this.txttotalpagar.TextChanged += new System.EventHandler(this.txttotalpagar_TextChanged);
-            // 
-            // bntregistrar
-            // 
-            this.bntregistrar.IconChar = FontAwesome.Sharp.IconChar.Tag;
-            this.bntregistrar.IconColor = System.Drawing.Color.ForestGreen;
-            this.bntregistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.bntregistrar.IconSize = 30;
-            this.bntregistrar.Location = new System.Drawing.Point(1152, 534);
-            this.bntregistrar.Name = "bntregistrar";
-            this.bntregistrar.Size = new System.Drawing.Size(107, 45);
-            this.bntregistrar.TabIndex = 37;
-            this.bntregistrar.Text = "Registrar";
-            this.bntregistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bntregistrar.UseVisualStyleBackColor = true;
-            this.bntregistrar.Click += new System.EventHandler(this.iconButton1_Click);
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.BackColor = System.Drawing.Color.ForestGreen;
-            this.iconButton1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Share;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 16;
-            this.iconButton1.Location = new System.Drawing.Point(1153, 231);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(86, 29);
-            this.iconButton1.TabIndex = 70;
-            this.iconButton1.Text = "Importar";
-            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click_1);
-            // 
             // Codigo
             // 
             this.Codigo.HeaderText = "Codigo";
@@ -649,12 +593,66 @@
             this.btneliminar.ReadOnly = true;
             this.btneliminar.Width = 30;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(1165, 492);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(74, 13);
+            this.label10.TabIndex = 36;
+            this.label10.Text = "Total a Pagar:";
+            // 
+            // txttotalpagar
+            // 
+            this.txttotalpagar.Location = new System.Drawing.Point(1152, 508);
+            this.txttotalpagar.Name = "txttotalpagar";
+            this.txttotalpagar.ReadOnly = true;
+            this.txttotalpagar.Size = new System.Drawing.Size(107, 20);
+            this.txttotalpagar.TabIndex = 26;
+            this.txttotalpagar.Text = "00";
+            // 
+            // bntregistrar
+            // 
+            this.bntregistrar.IconChar = FontAwesome.Sharp.IconChar.Tag;
+            this.bntregistrar.IconColor = System.Drawing.Color.ForestGreen;
+            this.bntregistrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.bntregistrar.IconSize = 30;
+            this.bntregistrar.Location = new System.Drawing.Point(1152, 534);
+            this.bntregistrar.Name = "bntregistrar";
+            this.bntregistrar.Size = new System.Drawing.Size(107, 45);
+            this.bntregistrar.TabIndex = 37;
+            this.bntregistrar.Text = "Registrar";
+            this.bntregistrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bntregistrar.UseVisualStyleBackColor = true;
+            this.bntregistrar.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
+            // btnImportar
+            // 
+            this.btnImportar.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnImportar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnImportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImportar.ForeColor = System.Drawing.Color.White;
+            this.btnImportar.IconChar = FontAwesome.Sharp.IconChar.Share;
+            this.btnImportar.IconColor = System.Drawing.Color.White;
+            this.btnImportar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnImportar.IconSize = 16;
+            this.btnImportar.Location = new System.Drawing.Point(1152, 186);
+            this.btnImportar.Name = "btnImportar";
+            this.btnImportar.Size = new System.Drawing.Size(86, 29);
+            this.btnImportar.TabIndex = 70;
+            this.btnImportar.Text = "Importar";
+            this.btnImportar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnImportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImportar.UseVisualStyleBackColor = false;
+            this.btnImportar.Click += new System.EventHandler(this.iconButton1_Click_1);
+            // 
             // frm_Compras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1338, 611);
-            this.Controls.Add(this.iconButton1);
+            this.Controls.Add(this.btnImportar);
             this.Controls.Add(this.bntregistrar);
             this.Controls.Add(this.txttotalpagar);
             this.Controls.Add(this.label10);
@@ -720,7 +718,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtpreciollevar;
         private System.Windows.Forms.Label label14;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnImportar;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtcategoria;
         private System.Windows.Forms.TextBox txtubicacion;

@@ -186,8 +186,6 @@ namespace Sistemas_de_ventas
             decimal totalFinal = totalProductos + totalServicios;
 
             txttotalpagar.Text = totalFinal.ToString("0.00");
-        }
-
             // Sumar subtotales de servicios
             if (dgvdataser.Rows.Count > 0)
             {
@@ -201,9 +199,10 @@ namespace Sistemas_de_ventas
             }
 
             // Sumar totales de ambos
-            decimal totalFinal = totalProductos + totalServicios;
+            decimal totalFinall = totalProductos + totalServicios;
 
-            txttotalpagar.Text = totalFinal.ToString("0.00");
+            txttotalpagar.Text = totalFinall.ToString("0.00");
+        
         }
 
         private void limpiarProducto()
@@ -273,7 +272,6 @@ namespace Sistemas_de_ventas
                 MontoTotal = Convert.ToDecimal(txttotalpagar.Text)
             };
 
-
             string mensaje = string.Empty;
             bool respuesta = new CN_Venta().RegistrarCotizacion(oVenta, detalle_venta, out mensaje);
 
@@ -319,7 +317,6 @@ namespace Sistemas_de_ventas
                 filas += "<td>" + row.Cells["SubTotal"].Value?.ToString() + "</td>";
                 filas += "</tr>";
             }
-
             
             foreach (DataGridViewRow row in dgvdataser.Rows)
             {
@@ -408,7 +405,6 @@ namespace Sistemas_de_ventas
                         e.Handled = true;
                     }
                 }
-
             }
         }
 
@@ -461,8 +457,6 @@ namespace Sistemas_de_ventas
                 }
             }
         }
-
-  
 
         private void dgvdataser_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

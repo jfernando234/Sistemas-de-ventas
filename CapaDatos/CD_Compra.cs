@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DocumentFormat.OpenXml.Office2010.ExcelAc;
 
 namespace CapaDatos
 {
@@ -171,6 +172,28 @@ namespace CapaDatos
                 oLista = new List<Detalle_Compra>();
             }
             return oLista;
+        }
+        private int ObtenerOCrearIdCategoria(string nombreCategoria)
+        {
+            using (SqlConnection conn = new SqlConnection(Conexion.cadena))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("sp_ObtenerOCrearCategoria", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@NombreCategoria", nombreCategoria);
+
+                    SqlParameter outputId = new SqlParameter("@IdCategoria", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(outputId);
+
+                    cmd.ExecuteNonQuery();
+
+                    return (int)outputId.Value;
+                }
+            }
         }
     }
 }

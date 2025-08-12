@@ -464,11 +464,7 @@ namespace Sistemas_de_ventas
                             Categoria = row.Cell(9).GetValue<string>().Trim()
                         };
 
-                        // Validar campos obligatorios
-                        if (!string.IsNullOrWhiteSpace(producto.Codigo) && !string.IsNullOrWhiteSpace(producto.Descripcion))
-                        {
-                            productos.Add(producto);
-                        }
+                        
                     }
                     catch (Exception ex)
                     {
@@ -507,5 +503,6 @@ namespace Sistemas_de_ventas
             }
 
         }
+
     }
 }
